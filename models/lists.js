@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 
-//need schema
-//need model
-//need to export
+const listScema = new mongoose.Schema({
+    title: String,
+    items: [],
+    dueDate: Date
+});
+
+const List = mongoose.model('List', listSchema);
+
+module.exports = List;
