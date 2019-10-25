@@ -33,6 +33,7 @@ router.get('/new', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const foundList = await List.findById(req.params.id);
+        List.items
         res.render('lists/show.ejs', {
             list: foundList
         })
@@ -41,21 +42,23 @@ router.get('/:id', async (req, res) => {
     }
 });
 //LIST CREATE
-router.post('/', (req, res) => {
-   List.create(req.body, (err, createdList) => {
-       if (err) {
-           res.send(err);
-       } else {}
-       res.redirect('/lists')
-   });
+router.post('/', async (req, res) => {
+    try {
+    const trimmedItems = req.body.items.replace(/\s+/g, '');
+    console.log(trimmedItems);
+    const separatedItems = trimmedItems.split(',');
+    console.log()
+    const newList = {
+        title: req.body.title,
+        items: separatedItems,
+        dueDate: req.body.dueDate
+    };
+    const createdList = await List.create(newList);
+        res.redirect('/lists');
+    } catch (err) {
+        res.send(err);
+    }
    
-    // try {
-    //     List.create(req.body, (err, createdList) => { 
-    //         res.redirect('/lists')  
-    //     })
-    // } catch (err) {
-    //     res.send(err);
-    // }
 });
 
 //LIST EDIT
