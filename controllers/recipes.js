@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
 		if (err) {
 			res.send(err);
 		} else {
-			console.log(createdRecipe);
+			console.log(createRecipe);
 			res.redirect('/recipes')
 		}
 	})
