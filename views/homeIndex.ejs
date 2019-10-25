@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Get Together</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <h1>Get Together</h1>
+            <h4>Login</h4>
+            <%= message %> 
+            <form action="/auth/login" method="POST">
+                <input type="text" name="username" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <button type="submit">Log In</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        <h4>Registration</h4>
+        <form action="/auth/registration" method="POST">
+            <input type="text" name="username" placeholder="Username"><br>
+            <input type="email" name="email" placeholder="Email"><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <button type="submit">Register</button>
+        </form>
+        <% if(logged === true){ %>
+            <a href="/groups">My Groups</a>
+            <a href="/auth/logout">Logout</a>
+        <%}%>
+    </main>
+
 </body>
 </html>
