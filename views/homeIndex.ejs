@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Get Together</title>
 </head>
 <body>
     <header>
         <nav>
             <h1>Get Together</h1>
             <h4>Login</h4>
+            <%= message %>
             <form action="/auth/login" method="POST">
                 <input type="text" name="username" placeholder="Username" />
                 <input type="password" name="password" placeholder="Password" />

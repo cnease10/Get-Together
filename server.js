@@ -36,7 +36,13 @@ const recipesController = require('./controllers/recipes.js');
 app.use('/recipes', recipesController);
 
 
-
+// home page
+app.get('/', (req, res) => {
+  console.log(req.session, 'home route')
+  res.render('homeIndex.ejs', {
+    message: req.session.message,
+  })
+});
 
 
 
