@@ -1,1 +1,34 @@
-Edit route
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Group Edit</title>
+</head>
+
+<body>
+    <header>
+        <h1>Edit <%=group.title%>'s Info</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/groups">My Groups</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Group Attributes:</h2>
+        <form action="/groups/<%=group._id%>?_method=PUT" method="post">
+                Name of Group: <input type="text" name="name" value="<%=group.name%>" /><br />
+                Group Photo URL: <input type="text" name="groupPhoto" value="<%=group.groupPhoto%>" /><br />
+                <input type="submit" value="Edit Group" />
+            
+        </form>
+    </main>
+</body>
+
+</html>
