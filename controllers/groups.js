@@ -5,7 +5,7 @@ const User = require("../models/users");
 
 //ROUTES
 
-//index route  DONE
+//index route  need to make sure it finds only the CURRENT users groups
 router.get('/', async (req, res) => {
     try {
         const foundGroups = await Group.find({});
@@ -60,14 +60,28 @@ router.get('/:id', async (req, res) => {
 
 
 //edit route
-
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const allUsers = await User.find({})
+        const foundGroupUser = await User.findOne({ 'groups': req.params.id })
+            .populate({ path: 'groups', match: { _id: req.params.id } })
+            .exec()
+        res.render('groups/edit.ejs', {
+            group: foundGroupUser.groups[0],
+            users: allUsers,
+            groupUser: foundGroupUser
+        });
+    } catch (err) {
+        res.send(err);
+    }
+});
 
 
 //update route
 
 
 
-//destroy route
+//destroy route DONE
 router.delete('/:id', async (req, res) => {
     try {
         const deleteGroup = await Group.findByIdAndRemove(req.params.id);
