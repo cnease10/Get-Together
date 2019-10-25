@@ -8,17 +8,18 @@
 </head>
 <body>
     <header>
-        <h1>List Show</h1>
-        <a href="/lists"><button>Edit List</button></a>
-        <a href=""><button>Delete</button></a>
+        <h1> <%= list.title%> </h1>
+        <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a>
+        <form action="/lists/<%=list.id%>?_method=DELETE" method="POST">
+            <button>Delete List</button>
+        </form>
         <a href="/lists"><button>All Lists</button></a>
     </header>
-    <h2> <%= list.title%> </h2>
     <h2> <%=list.dueDate%> </h2>
     <ul>
         <%for (let i = 0; i < list.items.length; i++) { %>
             <li>
-                <%=list[i] %>
+                <%=list.items[i] %>
             </li>
        <% } %>
     </ul>

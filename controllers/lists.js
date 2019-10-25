@@ -30,8 +30,15 @@ router.get('/new', async (req, res) => {
 });
 
 //LIST SHOW
-router.get('/:id', (req, res) => {
-    res.send('show page');
+router.get('/:id', async (req, res) => {
+    try {
+        const foundList = await List.findById(req.params.id);
+        res.render('lists/show.ejs', {
+            list: foundList
+        })
+    } catch (err) {
+        res.send(err);
+    }
 });
 //LIST CREATE
 router.post('/', (req, res) => {
