@@ -14,14 +14,14 @@ const recipeSchema = new mongoose.Schema({
 
 	//instructions go here. Required.
 	instructions: {type: String, required: true},
-	
+
 	//comments, could be changed to 'likes?'
 	//not required.
 	comments: String
 });
 
 
-//need model
+//modal
 const Recipe = mongoose.model('Recipe', recipeSchema);
 //exporting
 module.exports = Recipe;

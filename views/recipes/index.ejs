@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GT Recipes</title>
+  </head>
+  <body>
+    <header>
+      <h1>Recipes Index</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/recipes/new">Create a New Recipe</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Recipes List</h2>
+      <ul>
+        <% for(let i = 0; i < recipes.length; i++){ %>
+          <li>
+            <a href="/recipes/<%=recipes[i]._id%>"><%=recipes[i].title%></a>
+          </li>
+        <% } %>
+      </ul>
+    </main>
+  </body>
+</html>
