@@ -8,8 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>Edit <%=list.title%> </h1>
+        <h1>Edit List</h1>
     </header>
-    
+    <form action="/lists/<%=list._id%>?_method=PUT" method="POST">
+       Edit list title: <input type="text" name="title" placeholder="<%=list.title%>"> <br>
+       Edit list items: <input type="text" name="items" placeholder="<%=list.items%>"> <br>
+        Edit list due date: <input type="text" name="dueDate" placeholder="<%=list.dueDate%>"> <br>
+        <button type="submit">Update List</button>
+    </form>
 </body>
 </html>

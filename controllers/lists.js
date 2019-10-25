@@ -64,23 +64,44 @@ router.post('/', async (req, res) => {
 //LIST EDIT
 router.get('/:id/edit', async (req, res) => {
     try {
-        const foundList = List.findById(req.params.id);
+        const foundList = await List.findById(req.params.id);
         res.render('lists/edit.ejs', {
             list: foundList
         });
+        console.log(foundList);
     } catch (err) {
-
+        res.send(err);
     }
 });
 
 //LIST UPDATE
-router.put('/:id', (req, res) => {
-    res.send('this is updated');
+router.put('/:id', async (req, res) => {
+    try {
+    const trimmedItems = req.body.items.replace(/\s+/g, '');
+    console.log(trimmedItems);
+    const separatedItems = trimmedItems.split(',');
+    console.log()
+    const newList = {
+            title: req.body.title,
+            items: separatedItems,
+            dueDate: req.body.dueDate
+    }
+    const updatedList = await List.findByIdAndUpdate(req.params.id, newList, {new: true}, (err, updatedList) => {
+    res.redirect('/lists')
+    });
+    } catch (err) {
+        res.send(err);
+    }
 });
 
 //LIST DELETE
-router.delete('/', (req, res) => {
-    res.send('deleted');
-})
+router.delete('/:id', async (req, res) => {
+    try {
+        const deletedList = await List.findByIdAndRemove(req.params.id);
+        res.redirect('/lists');
+    } catch (err) {
+        res.send(err);
+    }
+});
 
 module.exports = router;
