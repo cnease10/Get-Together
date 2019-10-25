@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Your Recipe</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/recipes">Recipes Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1><%=recipe.title%></h1>
+      <section><a href="/recipes/<%=recipe._id%>"><%=recipe.title%></a>
+      </section>
+      <section>
+        <%=recipe.ingredients%>
+      </section>
+      <section>
+        <%=recipe.instructions%>
+      </section>
+      <section>
+        <%=recipe.comments%>
+      </section>
+      <section>
+        <a href="/recipes/<%=recipe._id%>/edit">Edit</a>
+      </section>
+      <section>
+        <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post">
+            <input type="submit" value="Delete Recipe"/>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
