@@ -34,16 +34,15 @@ router.get('/new', (req, res) => {
 
 
 //show route
-router.get('/recipes/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
 		if (err) {
 			res.send(err);
 		} else {
-			console.log(foundRecipe);
-			res.render('show.ejs', {
-				// recipes: foundRecipe
-			})
-		}
+			res.render('recipes/show.ejs', {
+			recipe: foundRecipe
+		});
+		}	
 	})
 });
 
@@ -64,15 +63,12 @@ router.post('/', (req, res) => {
 //edit route
 router.get('/:id/edit', (req, res) => {
 	Recipe.findById(req.params.id, (err, foundRecipe) => {
-		if (err) {
-			res.send(err);
-		} else {
-			res.render('edit.ejs', {
-				// recipes: foundRecipe
+			res.render('recipes/edit.ejs', {
+				recipe: foundRecipe
 			})
-		}
-	})
-});
+		})
+	});
+
 
 //update route
 router.put('/:id', (req, res) => {
