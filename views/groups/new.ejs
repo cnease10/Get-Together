@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Group</title>
+</head>
+<body>
+
+    <header>
+        <h1>Create a Group</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/groups">My Groups</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form action="/groups" method="post">
+            <input type="text" name="name" /><br />
+            <input type="date" name="dateStarted" /><br />
+            <input type="text" name="groupPhoto" /><br />
+            <input type="submit" value="Create Group" />
+        </form>
+    </main>
+    
+</body>
+</html>

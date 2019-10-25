@@ -41,6 +41,7 @@ app.get('/', (req, res) => {
   console.log(req.session, 'home route')
   res.render('homeIndex.ejs', {
     message: req.session.message,
+    logged: req.session.logged
   })
 });
 
