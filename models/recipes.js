@@ -10,7 +10,12 @@ const recipeSchema = new mongoose.Schema({
 	//ingredients array - (1cup milk, 2 cups sugar)
 	//Not required - some users may
 	//want to type out all instructions in body.
-	ingredients: [String],
+	ingredients: {
+		amount: {type: Number},
+		measurement: {type: String},
+		description: {type: String}
+	},
+	
 
 	//instructions go here. Required.
 	instructions: {type: String, required: true},

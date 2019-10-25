@@ -27,17 +27,9 @@ router.get('/', (req, res) => {
 
 //new route
 router.get('/new', (req, res) => {
-	// Recipe.find({}, (err, allUsers) => {
-	
-	//Do we need this related to Groups?
-		// if(err) {
-		// 	res.send(err);
-		// } else {
-		// 	console.log(allUsers);
-			res.render('recipes/new.ejs')
-		});
-// 	})
-// });
+	res.render('recipes/new.ejs')
+});
+
 
 
 

@@ -1,36 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>new recipes GT</title>
-  </head>
-  <body>
-    <header>
-      <h1>Create a Recipe</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/recipes">Recipes Index</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-    <form action="/recipes" method="POST">
-      <select name="recipeId">
-        <%for (let i = 0; i < recipes.length; i++) { %>
+<head>
+  <title>New Recipes</title>
+</head>
+<body>
 
-           <option value="<%=recipes[i]._id%>"><%=recipes[i].name%></option>
+  <h1>New Recipes</h1>
+  <form action='/recipes' method='POST'>
+    Recipe Name: <input type="text" name="title"><br>
+    Ingredients List: <input type="text" name="ingredients"><br>
+    Recipe Instructions: <input type="text" name="instructions"><br>
+    Comments: <input type="text" name="comments"><br>
+    <input type="submit" name="" value="Submit Book">
+  </form>
 
-        <% } %>
-      </select><br/>
-      <input type="text" name="title" /><br/>
-      <textarea name="body"></textarea><br/>
-      <button type="submit">Create Recipe</button>
-    </form>
-    </main>
-  </body>
+</body>
 </html>
