@@ -34,14 +34,21 @@ router.get('/:id', (req, res) => {
     res.send('show page');
 });
 //LIST CREATE
-router.post('/', async (req, res) => {
-    try {
-        List.create(req.body, (err, createdAuthor) => { 
-            res.redirect('/lists')  
-        })
-    } catch (err) {
-        res.send(err);
-    }
+router.post('/', (req, res) => {
+   List.create(req.body, (err, createdList) => {
+       if (err) {
+           res.send(err);
+       } else {}
+       res.redirect('/lists')
+   });
+   
+    // try {
+    //     List.create(req.body, (err, createdList) => { 
+    //         res.redirect('/lists')  
+    //     })
+    // } catch (err) {
+    //     res.send(err);
+    // }
 });
 
 //LIST EDIT

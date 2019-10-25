@@ -7,6 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>List Show</h1>
+    <header>
+        <h1>List Show</h1>
+        <a href="/lists"><button>Edit List</button></a>
+        <a href=""><button>Delete</button></a>
+        <a href="/lists"><button>All Lists</button></a>
+    </header>
+    <h2> <%= list.title%> </h2>
+    <h2> <%=list.dueDate%> </h2>
+    <ul>
+        <%for (let i = 0; i < list.items.length; i++) { %>
+            <li>
+                <%=list[i] %>
+            </li>
+       <% } %>
+    </ul>
 </body>
 </html>
