@@ -17,6 +17,9 @@
         <% for (let i =0; i < list.length; i++) { %>
             <li>
                 <a href="/lists/<%=list[i]._id%>"><%=list[i].title%></a>
+                <form action="/lists/<%=list[i].id%>?_method=DELETE" method="POST">
+                    <button>Delete List</button>
+                </form>
            </li>
         <% } %>
    
