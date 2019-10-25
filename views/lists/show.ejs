@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1> <%= list.title%> </h1>
+        <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a>
+        <form action="/lists/<%=list.id%>?_method=DELETE" method="POST">
+            <button>Delete List</button>
+        </form>
+        <a href="/lists"><button>All Lists</button></a>
+    </header>
+    <h2> <%=list.dueDate%> </h2>
+    <ul>
+        <%for (let i = 0; i < list.items.length; i++) { %>
+            <li>
+                <%=list.items[i] %>
+            </li>
+       <% } %>
+    </ul>
+</body>
+</html>
