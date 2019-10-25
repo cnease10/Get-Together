@@ -78,7 +78,28 @@ router.get('/:id/edit', async (req, res) => {
 
 
 //update route
-
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedGroup = await Group.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const foundUser = await User.findOne({ 'groups': req.params.id });
+        
+        // If the if is true, then what is happening?
+        // That means the user changed the user on the edit page
+        // if (foundUser._id.toString() != req.body.userId) {
+        //     foundUser.groups.remove(req.params.id);
+        //     await foundUser.save();
+        //     const newUser = await User.findById(req.body.userId);
+        //     newUser.groups.push(updatedGroup);
+        //     const savedNewUser = await newUser.save();
+        //     res.redirect('/groups/' + req.params.id);
+        // } else {
+            res.redirect('/groups/' + req.params.id);
+        // }
+    } catch (err) {
+        console.log(err)
+        res.send(err);
+    }
+});
 
 
 //destroy route DONE

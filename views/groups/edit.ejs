@@ -23,15 +23,6 @@
     <main>
         <h2>Group Attributes:</h2>
         <form action="/groups/<%=group._id%>?_method=PUT" method="post">
-            <select name="userId">
-                <% for(let i = 0; i < users.length; i++) { %>
-                <option value="<%=users[i]._id%>"
-                    <% if(users[i]._id.toString() === groupUser._id.toString()){ %> selected <% } %>>
-                    <%=users[i].username%>
-                </option>
-                <% } %>
-            </select><br />
-            
                 Name of Group: <input type="text" name="name" value="<%=group.name%>" /><br />
                 Group Photo URL: <input type="text" name="groupPhoto" value="<%=group.groupPhoto%>" /><br />
                 <input type="submit" value="Edit Group" />
