@@ -16,7 +16,6 @@ router.post('/registration', async (req, res) => {
     console.log(`Created User ==>`,createdUser)
     req.session.username = createdUser.username;
     req.session.logged = true;
-
     res.redirect('/groups')
 })
 
@@ -43,7 +42,7 @@ router.post('/login', async (req, res) => {
     }
 });
  
-
+//logout route
 router.get('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
