@@ -31,6 +31,9 @@
                 <form method="POST" action="/groups/<%= groups[i]._id %>?_method=DELETE">
                     <button type="submit">Delete this Group</button>
                 </form>
+                <form action="/groups/<%=groups[i]._id%>/edit">
+                    <button type='submit'>Edit </button>
+                </form>
 
             </li>
             <% } %>

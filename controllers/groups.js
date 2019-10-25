@@ -5,7 +5,7 @@ const User = require("../models/users");
 
 //ROUTES
 
-//index route  DONE
+//index route  need to make sure it finds only the CURRENT users groups
 router.get('/', async (req, res) => {
     try {
         const foundGroups = await Group.find({});
@@ -60,14 +60,49 @@ router.get('/:id', async (req, res) => {
 
 
 //edit route
-
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const allUsers = await User.find({})
+        const foundGroupUser = await User.findOne({ 'groups': req.params.id })
+            .populate({ path: 'groups', match: { _id: req.params.id } })
+            .exec()
+        res.render('groups/edit.ejs', {
+            group: foundGroupUser.groups[0],
+            users: allUsers,
+            groupUser: foundGroupUser
+        });
+    } catch (err) {
+        res.send(err);
+    }
+});
 
 
 //update route
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedGroup = await Group.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const foundUser = await User.findOne({ 'groups': req.params.id });
+        
+        // If the if is true, then what is happening?
+        // That means the user changed the user on the edit page
+        // if (foundUser._id.toString() != req.body.userId) {
+        //     foundUser.groups.remove(req.params.id);
+        //     await foundUser.save();
+        //     const newUser = await User.findById(req.body.userId);
+        //     newUser.groups.push(updatedGroup);
+        //     const savedNewUser = await newUser.save();
+        //     res.redirect('/groups/' + req.params.id);
+        // } else {
+            res.redirect('/groups/' + req.params.id);
+        // }
+    } catch (err) {
+        console.log(err)
+        res.send(err);
+    }
+});
 
 
-
-//destroy route
+//destroy route DONE
 router.delete('/:id', async (req, res) => {
     try {
         const deleteGroup = await Group.findByIdAndRemove(req.params.id);
