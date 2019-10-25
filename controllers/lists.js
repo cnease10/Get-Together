@@ -62,8 +62,15 @@ router.post('/', async (req, res) => {
 });
 
 //LIST EDIT
-router.get('/:id/edit', (req, res) => {
-    res.send('edit page');
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const foundList = List.findById(req.params.id);
+        res.render('lists/edit.ejs', {
+            list: foundList
+        });
+    } catch (err) {
+
+    }
 });
 
 //LIST UPDATE
