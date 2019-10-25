@@ -6,6 +6,27 @@
     <title>Homepage</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <h1>Get Together</h1>
+            <h4>Login</h4>
+            <form action="/auth/login" method="POST">
+                <input type="text" name="username" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <button type="submit">Log In</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        <h4>Registration</h4>
+        <form action="/auth/registration" method="POST">
+            <input type="text" name="username" placeholder="username"><br>
+            <input type="email" name="email" placeholder="email"><br>
+            <input type="password" name="password" placeholder="password"><br>
+            <button type="submit">Register</button>
+        </form>
+    </main>
+
 </body>
 </html>
