@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const listScema = new mongoose.Schema({
+const listSchema = new mongoose.Schema({
     title: String,
     items: [],
     dueDate: Date

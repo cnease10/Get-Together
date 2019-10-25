@@ -7,7 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>List Index</h1>
-    
+    <header>
+        <h1>List Index</h1>
+        <a href="/groups/"><button>Back to<br>Get Together</button></a>
+        <a href="/lists/new"> <button>Create <br> a List</button> </a>
+    </header>
+    <h2>Lists</h2>
+    <ul>
+        <% for (let i =0; i < list.length; i++) { %>
+            <li>
+                <a href="/lists/<%=list[i]._id%>"><%=list[i].title%></a>
+           </li>
+        <% } %>
+   
+    </ul>
+
 </body>
 </html>

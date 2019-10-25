@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const List = require('../models/lists.js');
+const Group = require('../models/groups.js');
 
 
 //need to think about if this file needs to be relational
@@ -7,22 +9,39 @@ const router = express.Router();
 //need routes
 
 //LIST INDEX
-router.get('/', (req, res) => {
-    res.send('index page');
+router.get('/', async (req, res) => {
+    try {
+        const foundLists = await List.find({});
+        res.render('lists/index.ejs', {
+            list: foundLists
+        });
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+//LIST NEW
+router.get('/new', async (req, res) => {
+    try {
+        res.render('lists/new.ejs');
+    } catch (err) {
+        res.send(err);
+    }
 });
 
 //LIST SHOW
 router.get('/:id', (req, res) => {
-    router.send('show page');
+    res.send('show page');
 });
-//LIST NEW
-router.get('/new', (req, res) => {
-    res.send('new page');
-});
-
 //LIST CREATE
-router.post('/', (req, res) => {
-    res.send('posted');
+router.post('/', async (req, res) => {
+    try {
+        List.create(req.body, (err, createdAuthor) => { 
+            res.redirect('/lists')  
+        })
+    } catch (err) {
+        res.send(err);
+    }
 });
 
 //LIST EDIT
