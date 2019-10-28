@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Recipe = require('../models/recipes');
+const Group = require("../models/groups")
 
 //need to think about if this file needs to be relational
 //ex: const name = require('../models/name.js');
@@ -11,23 +12,30 @@ const Recipe = require('../models/recipes');
 
 // const User = require('..models/users');
 
-//index route
-router.get('/', (req, res) => {
-	Recipe.find({}, (err, foundRecipes) => {
-		if (err) {
-			res.send(err);
-		} else {
-			res.render('recipes/index.ejs', {
-				recipes: foundRecipes
-			})
-		}
-	});
+//index route   MIKE
+router.get('/', async (req, res) => {
+	try{
+		const foundRecipes = await Recipe.find({})
+		res.render("recipes/index.ejs", {
+			recipes: foundRecipes
+		})
+	}catch(err){
+		res.send(err)
+	}
+
 });		
 	
 
-//new route
-router.get('/new', (req, res) => {
-	res.render('recipes/new.ejs')
+//new route   MIKE
+router.get('/new', async (req, res) => {
+	try{
+		const allGroups = await Group.find({})
+		res.render('recipes/new.ejs', {
+			groups: allGroups
+		})
+	}catch(err){
+		res.send(err)
+	}
 });
 
 
@@ -46,19 +54,36 @@ router.get('/:id', (req, res) => {
 	})
 });
 
+
+
 //create route
-router.post('/', (req, res) => {
-	console.log(req.body);
-	//create new recipe
-	Recipe.create(req.body, (err, createRecipe) => {
-		if (err) {
-			res.send(err);
-		} else {
-			console.log(createRecipe);
-			res.redirect('/recipes')
-		}
-	})
+router.post('/', async (req, res) => {
+	try {
+		const createdRecipe = await Recipe.create(req.body);
+		const foundGroup = await Group.findById(req.body.groupId);
+		foundGroup.recipes.push(createdRecipe);
+		await foundGroup.save();
+		console.log(foundGroup);
+		res.redirect('/recipes');
+	} catch(err) {
+		res.send(err);
+	}
 });
+
+
+	// console.log(req.body);
+	// //create new recipe
+	// Recipe.create(req.body, (err, createRecipe) => {
+	// 	if (err) {
+	// 		res.send(err);
+	// 	} else {
+	// 		console.log(createRecipe);
+	// 		res.redirect('/recipes')
+	// 	}
+	// })
+
+
+
 
 //edit route
 router.get('/:id/edit', (req, res) => {
