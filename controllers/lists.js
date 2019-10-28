@@ -32,7 +32,7 @@ router.get('/new', async (req, res) => {
     }
 });
 
-//LIST SHOW    MIKE come back
+//LIST SHOW    MIKE
 router.get('/:id', async (req, res) => {
     try {
         const foundGroup = await Group.findOne({ 'lists': req.params.id })
@@ -56,6 +56,7 @@ router.get('/:id', async (req, res) => {
         res.send(err);
     }
 });
+
 //LIST CREATE   MIKE
 router.post('/', async (req, res) => {
     try {
@@ -80,48 +81,78 @@ router.post('/', async (req, res) => {
         res.redirect('/lists');
     } catch (err) {
         res.send(err);
-    }
-    
-   
+    } 
 });
 
-//LIST EDIT
+//LIST EDIT   MIKE
 router.get('/:id/edit', async (req, res) => {
     try {
-        const foundList = await List.findById(req.params.id);
+        const allGroups = await Group.find({})
+
+        const foundListGroup = await Group.findOne({ 'lists': req.params.id })
+            .populate({ path: 'lists', match: { _id: req.params.id } })
+            .exec()
         res.render('lists/edit.ejs', {
-            list: foundList
+            list: foundListGroup.lists[0],
+            groups: allGroups,
+            listGroup: foundListGroup
         });
-        console.log(foundList);
+        // const foundList = await List.findById(req.params.id);
+        // res.render('lists/edit.ejs', {
+        //     list: foundList
+        // });
+        // console.log(foundList);
     } catch (err) {
         res.send(err);
     }
 });
 
-//LIST UPDATE
+
+//LIST UPDATE   MIKE
 router.put('/:id', async (req, res) => {
     try {
-    const trimmedItems = req.body.items.replace(/\s+/g, '');
-    console.log(trimmedItems);
-    const separatedItems = trimmedItems.split(',');
-    console.log()
-    const newList = {
+        const foundGroup = Group.findOne({ 'lists': req.params.id });
+        console.log(`FOUND GROUP`, foundGroup)
+
+        const trimmedItems = req.body.items.replace(/\s+/g, '');
+        console.log(`TRIMMED`, trimmedItems);
+        const separatedItems = trimmedItems.split(',');
+        const newList = {
             title: req.body.title,
             items: separatedItems,
             dueDate: req.body.dueDate
-    }
-    const updatedList = await List.findByIdAndUpdate(req.params.id, newList, {new: true}, (err, updatedList) => {
-    res.redirect('/lists')
-    });
+        }
+        // console.log(`NEWLIST`, newList)
+        // console.log(`REQBODY`, req.body)
+        const updatedList = List.findByIdAndUpdate(req.params.id, newList, { new: true }) 
+        const [updateList, findGroup] = await Promise.all([updatedList, foundGroup])
+        // console.log(`UpdateList`, updateList)
+        // console.log(`findgroup`, findGroup)
+
+        if (findGroup._id.toString() != req.body.groupId) {
+            findGroup.lists.remove(req.params.id);
+            await findGroup.save();
+            const newGroup = await Group.findById(req.body.groupId);
+            newGroup.lists.push(updateList);
+            const savedNewGroup = await newGroup.save();
+            res.redirect('/lists/' + req.params.id);
+        } else {
+            console.log('else statement')
+            res.redirect('/lists/' + req.params.id);
+        }
     } catch (err) {
         res.send(err);
     }
 });
 
-//LIST DELETE
+//LIST DELETE   MIKE
 router.delete('/:id', async (req, res) => {
     try {
         const deletedList = await List.findByIdAndRemove(req.params.id);
+        const foundGroup = await Group.findOne({ 'lists': req.params.id });
+        foundGroup.lists.remove(req.params.id);
+        await foundGroup.save()
+        console.log(`CHECK IF LISTS GONE`, foundGroup)
         res.redirect('/lists');
     } catch (err) {
         res.send(err);
