@@ -13,6 +13,11 @@
     </header>
 
     <form action="/lists" method="POST">
+        Which Group does this list belong to: <select name="groupId">
+            <% for(let i = 0; i < groups.length; i++) { %>
+            <option value="<%=groups[i]._id%>"><%=groups[i].name%></option>
+            <% } %>
+        </select><br />
        Give your list a title: <input type="text" name="title" > <br>
        Give your list some items: <input type="text" name="items" placeholder="ex: food, games, drinks,"> use commas to separate items<br>
        Give your list a due date: <input type="text" name="dueDate" placeholder="ex: 10/31/19"> <br>

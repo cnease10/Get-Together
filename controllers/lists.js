@@ -8,7 +8,7 @@ const Group = require('../models/groups.js');
 //ex: const name = require('../models/name.js');
 //need routes
 
-//LIST INDEX
+//LIST INDEX   MIKE
 router.get('/', async (req, res) => {
     try {
         const foundLists = await List.find({});
@@ -20,44 +20,68 @@ router.get('/', async (req, res) => {
     }
 });
 
-//LIST NEW
+//LIST NEW   MIKE
 router.get('/new', async (req, res) => {
     try {
-        res.render('lists/new.ejs');
+        const allGroups = await Group.find()
+        res.render('lists/new.ejs', {
+            groups: allGroups
+        });
     } catch (err) {
         res.send(err);
     }
 });
 
-//LIST SHOW
+//LIST SHOW    MIKE come back
 router.get('/:id', async (req, res) => {
     try {
-        const foundList = await List.findById(req.params.id);
-        List.items
-        res.render('lists/show.ejs', {
-            list: foundList
-        })
+        const foundGroup = await Group.findOne({ 'lists': req.params.id })
+            .populate(
+                {
+                    path: 'lists',
+                    match: { _id: req.params.id }
+                })
+            .exec()
+            res.render('lists/show.ejs', {
+                list: foundGroup.lists[0],
+                group: foundGroup
+            })
+
+
+
+                //sierras
+        // const foundList = await List.findById(req.params.id);
+        // List.items
     } catch (err) {
         res.send(err);
     }
 });
-//LIST CREATE
+//LIST CREATE   MIKE
 router.post('/', async (req, res) => {
     try {
-    const trimmedItems = req.body.items.replace(/\s+/g, '');
-    console.log(trimmedItems);
-    const separatedItems = trimmedItems.split(',');
-    console.log()
-    const newList = {
-        title: req.body.title,
-        items: separatedItems,
-        dueDate: req.body.dueDate
-    };
-    const createdList = await List.create(newList);
+
+        //sierras
+        const trimmedItems = req.body.items.replace(/\s+/g, '');
+        // console.log(trimmedItems);
+        const separatedItems = trimmedItems.split(',');
+        // console.log()
+        const newList = {
+            title: req.body.title,
+            items: separatedItems,
+            dueDate: req.body.dueDate
+        };
+        const createdList = await List.create(newList);
+
+        const foundGroup = await Group.findById(req.body.groupId);
+
+        foundGroup.lists.push(createdList)
+        await foundGroup.save();
+        console.log(foundGroup)
         res.redirect('/lists');
     } catch (err) {
         res.send(err);
     }
+    
    
 });
 
