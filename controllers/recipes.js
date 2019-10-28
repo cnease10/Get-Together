@@ -105,16 +105,33 @@ router.put('/:id', (req, res) => {
 		})
 })
 
-//delete/destroy route
-router.delete('/:id', (req, res) => {
-	Recipe.deleteOne({_id: req.params.id}, (err, response) => {
-		if (err) {
-			res.send(err);
-		} else {
-			console.log(response);
-			res.redirect('/recipes')
-		}
-	})
+//delete/destroy route MIKE
+router.delete('/:id', async (req, res) => {
+	try {
+		const deletedRecipe = await Recipe.findByIdAndRemove(req.params.id)
+		const foundGroup = await Group.findOne({"recipes": req.params.id})
+		foundGroup.recipes.remove(req.params.id)
+		await foundGroup.save()
+		console.log("Check if recipe gone", foundGroup);
+		res.redirect("/recipes");
+	} catch(err) {
+		res.send(err);
+	}
+	
+	
+	
+	
+	
+	
+	
+	// Recipe.deleteOne({_id: req.params.id}, (err, response) => {
+	// 	if (err) {
+	// 		res.send(err);
+	// 	} else {
+	// 		console.log(response);
+	// 		res.redirect('/recipes')
+	// 	}
+	// })
 })
 
 
