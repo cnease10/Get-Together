@@ -9,13 +9,26 @@
 <body>
     <header>
         <h1>Edit <%=list.title%> list</h1>
-        <a href="/lists/<%=list._id%>"> <button>Nevermind</button> </a>
+        <a href="/lists/<%=list._id%>"> <button>Go Back</button> </a>
     </header>
-    <form action="/lists/<%=list._id%>?_method=PUT" method="POST">
-       Edit list title: <input type="text" name="title" value="<%=list.title%>"> <br>
-       Edit list items: <input type="text" name="items" value="<%=list.items%>"> <br>
-        Edit list due date: <input type="text" name="dueDate" value="<%=list.dueDate%>"> <br>
-        <button type="submit">Update List</button>
-    </form>
+
+    <main>
+        <h2>List Attributes</h2>
+
+        <form action="/lists/<%=list._id%>?_method=PUT" method="POST">
+            Select which group the list belongs: <select name="groupId">
+                <% for(let i = 0; i < groups.length; i++) { %>
+                <option value="<%=groups[i]._id%>" <% if(groups[i]._id.toString() === listGroup._id.toString()){ %> selected
+                    <% } %>>
+                    <%=groups[i].name%>
+                </option>
+                <% } %>
+            </select><br />
+            Edit list title: <input type="text" name="title" value="<%=list.title%>"> <br>
+            Edit list items: <input type="text" name="items" value="<%=list.items%>"> <br>
+            Edit list due date: <input type="text" name="dueDate" value="<%=list.dueDate%>"> <br>
+            <button type="submit">Update List</button>
+        </form>
+    </main>
 </body>
 </html>
