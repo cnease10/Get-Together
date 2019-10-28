@@ -41,22 +41,26 @@ router.get('/new', async (req, res) => {
 
 
 
-//show route
-router.get('/:id', (req, res) => {
-	Recipe.findById(req.params.id, (err, foundRecipe) => {
-		if (err) {
-			res.send(err);
-		} else {
-			res.render('recipes/show.ejs', {
-			recipe: foundRecipe
-		});
-		}	
-	})
+//show route   MIKE
+router.get('/:id', async (req, res) => {
+	try {
+		const foundGroup = await Group.findOne({"recipes": req.params.id})
+			.populate({
+				path: "recipes",
+				match: {_id: req.params.id}
+			}).exec()
+		res.render("recipes/show.ejs", {
+			recipe: foundGroup.recipes[0],
+			group: foundGroup
+		})
+	} catch(err) {
+		res.send(err);
+	}
 });
 
 
 
-//create route
+//create route   MIKE
 router.post('/', async (req, res) => {
 	try {
 		const createdRecipe = await Recipe.create(req.body);
@@ -69,18 +73,6 @@ router.post('/', async (req, res) => {
 		res.send(err);
 	}
 });
-
-
-	// console.log(req.body);
-	// //create new recipe
-	// Recipe.create(req.body, (err, createRecipe) => {
-	// 	if (err) {
-	// 		res.send(err);
-	// 	} else {
-	// 		console.log(createRecipe);
-	// 		res.redirect('/recipes')
-	// 	}
-	// })
 
 
 
