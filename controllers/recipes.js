@@ -77,32 +77,45 @@ router.post('/', async (req, res) => {
 
 
 
-//edit route
-router.get('/:id/edit', (req, res) => {
-	Recipe.findById(req.params.id, (err, foundRecipe) => {
-			res.render('recipes/edit.ejs', {
-				recipe: foundRecipe
-			})
-		})
-	});
+//edit route   MIKE
+router.get('/:id/edit', async (req, res) => {
+	try { 
+		const allGroups = await Group.find({})
+		const foundRecipeGroup = await Group.findOne({"recipes": req.params.id})
+			.populate({path: "recipes", match: {_id: req.params.id}})
+			.exec()
+		res.render("recipes/edit.ejs", {
+			recipe: foundRecipeGroup.recipes[0],
+			groups: allGroups,
+			recipeGroup: foundRecipeGroup
+		})	
+
+	} catch(err) {
+		res.send(err);
+	}
+});
 
 
-//update route
-router.put('/:id', (req, res) => {
-	console.log(req.body)
-
-	Recipe.findByIdandUpdate(
-		req.params.id,
-		req.body,
-		{new: true},
-		(err, updatedRecipe) => {
-			if(err) {
-				res.send(err);
-			} else {
-				console.log(updatedRecipe);
-				res.redirect('/recipes')
-			}
-		})
+//update route   MIKE
+router.put('/:id', async (req, res) => {
+	try{
+		const foundGroup = Group.findOne({"recipes": req.params.id})
+		const updatedRecipe = Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true})
+		const [updateRecipe, findGroup] = await Promise.all([updatedRecipe, foundGroup])
+		if (findGroup._id.toString() != req.body.groupId) {
+			findGroup.recipes.remove(req.params.id);
+			await findGroup.save();
+			const newGroup = await Group.findById(req.body.groupId);
+			newGroup.recipes.push(updateRecipe);
+			const savedNewGroup = await newGroup.save();
+			res.redirect('/recipes/' + req.params.id);
+		} else {
+			console.log('else statement')
+			res.redirect('/recipes/' + req.params.id);
+		}
+	} catch(err) {
+		res.send(err);
+	}
 })
 
 //delete/destroy route MIKE
@@ -117,21 +130,6 @@ router.delete('/:id', async (req, res) => {
 	} catch(err) {
 		res.send(err);
 	}
-	
-	
-	
-	
-	
-	
-	
-	// Recipe.deleteOne({_id: req.params.id}, (err, response) => {
-	// 	if (err) {
-	// 		res.send(err);
-	// 	} else {
-	// 		console.log(response);
-	// 		res.redirect('/recipes')
-	// 	}
-	// })
 })
 
 

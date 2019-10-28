@@ -21,7 +21,13 @@
     <main>
       <h2>Recipe Attributes:</h2>
       <form action="/recipes/<%=recipe._id%>?_method=PUT" method="post">
-       
+      Select which group the Recipe belongs: <select name="groupId">
+        <% for(let i = 0; i < groups.length; i++) { %>
+        <option value="<%=groups[i]._id%>" <% if(groups[i]._id.toString() === recipeGroup._id.toString()){ %> selected <% } %>>
+          <%=groups[i].name%>
+        </option>
+        <% } %>
+      </select><br />
         <input type="text" name="title" value="<%=recipe.title%>"/><br/>
         <textarea name="ingredients"><%=recipe.ingredients%></textarea><br/>
         <textarea name="instructions"><%=recipe.instructions%></textarea><br/>
