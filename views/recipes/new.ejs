@@ -3,7 +3,7 @@
 <head>
   <title>New Recipes</title>
 </head>
-<body>
+<body id="recNew">
     <header>
         <h1>New Recipes</h1>
         <nav>
@@ -22,7 +22,7 @@
             </ul>
         </nav>
     </header>
-      <main>
+      <main id="recNMain">
           <form action='/recipes' method='POST'>
             Which group does this Recipe belong to: <select name="groupId">
               <% for(let i = 0; i < groups.length; i++) { %>

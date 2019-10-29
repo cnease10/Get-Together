@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body id="listNew">
     <header>
         <h1>List New</h1>
         <nav>
@@ -25,7 +25,7 @@
             </ul>
         </nav>
     </header>
-        <main>
+        <main id="listNMain">
             <form action="/lists" method="POST">
                 Which Group does this list belong to: <select name="groupId">
                     <% for(let i = 0; i < groups.length; i++) { %>

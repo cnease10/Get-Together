@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body id="listEdit">
     <header>
         <h1>Edit <%=list.title%> list</h1>
             <nav>
@@ -24,7 +24,7 @@
             </nav>  
     </header>
 
-    <main>
+    <main id="listEMain">
         <h2>List Attributes</h2>
 
         <form action="/lists/<%=list._id%>?_method=PUT" method="POST">

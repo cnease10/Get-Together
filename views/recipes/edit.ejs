@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Edit Recipes GT</title>
   </head>
-  <body>
+  <body id="recEdit">
     <header>
       <h1>Edit <%=recipe.title%></h1>
         <nav>
@@ -21,7 +21,7 @@
           </ul>
        </nav>
     </header>
-    <main>
+    <main id="recEMain">
       <h2>Recipe Attributes</h2>
         <form action="/recipes/<%=recipe._id%>?_method=PUT" method="post">
             Select which group the Recipe belongs: <select name="groupId">
