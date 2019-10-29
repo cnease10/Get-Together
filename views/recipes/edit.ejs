@@ -7,32 +7,35 @@
   <body>
     <header>
       <h1>Edit <%=recipe.title%></h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/recipes">Recipes Index</a>
-          </li>
-        </ul>
-      </nav>
+        <nav>
+           <ul>
+             <li>
+               <a href="/recipes/<%=recipe._id%>"> <button>Back</button> </a>
+             </li>
+             <li>
+               <a href="/recipes">Recipes Index</a>
+             </li>
+             <li>
+              <a href="/">Home</a>
+             </li>
+          </ul>
+       </nav>
     </header>
     <main>
-      <h2>Recipe Attributes:</h2>
-      <form action="/recipes/<%=recipe._id%>?_method=PUT" method="post">
-      Select which group the Recipe belongs: <select name="groupId">
-        <% for(let i = 0; i < groups.length; i++) { %>
-        <option value="<%=groups[i]._id%>" <% if(groups[i]._id.toString() === recipeGroup._id.toString()){ %> selected <% } %>>
-          <%=groups[i].name%>
-        </option>
-        <% } %>
-      </select><br />
-        <input type="text" name="title" value="<%=recipe.title%>"/><br/>
-        <textarea name="ingredients"><%=recipe.ingredients%></textarea><br/>
-        <textarea name="instructions"><%=recipe.instructions%></textarea><br/>
-        <textarea name="comments"><%=recipe.comments%></textarea><br/>
-        <button type="submit">Update Recipe</button>
+      <h2>Recipe Attributes</h2>
+        <form action="/recipes/<%=recipe._id%>?_method=PUT" method="post">
+            Select which group the Recipe belongs: <select name="groupId">
+            <% for(let i = 0; i < groups.length; i++) { %>
+            <option value="<%=groups[i]._id%>" <% if(groups[i]._id.toString() === recipeGroup._id.toString()){ %> selected <% } %>>
+            <%=groups[i].name%>
+            </option>
+            <% } %>
+          </select><br/>
+            Edit recipe title: <input type="text" name="title" value="<%=recipe.title%>"/><br/>
+            Edit recipe ingriedients: <textarea name="ingredients"><%=recipe.ingredients%></textarea><br/>
+            Edit recipe instructions:<textarea name="instructions"><%=recipe.instructions%></textarea><br/>
+            Edit recipe comments: <textarea name="comments"><%=recipe.comments%></textarea><br/>
+            <button type="submit">Update Recipe</button>
       </form>
     </main>
   </body>

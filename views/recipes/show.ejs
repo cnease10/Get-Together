@@ -9,10 +9,16 @@
       <nav>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/recipes">Back to <br> group recipes</a>
           </li>
           <li>
-            <a href="/recipes">Recipes Index</a>
+            <!--Mike this is another spot where we will need to be
+                    specific about going back to the group associated
+                    with the recipe -->
+              <a href="/groups">My Groups</a>
+          </li>
+          <li>
+            <a href="/">Home</a>
           </li>
         </ul>
       </nav>
@@ -35,11 +41,9 @@
         <%=recipe.comments%>
       </section>
       <section>
-        <a href="/recipes/<%=recipe._id%>/edit">Edit</a>
-      </section>
-      <section>
+        <a href="/recipes/<%=recipe._id%>/edit">Edit Recipe</a>
         <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post">
-            <input type="submit" value="Delete Recipe"/>
+          <button type="submit">Delete Recipe</button>
         </form>
       </section>
     </main>

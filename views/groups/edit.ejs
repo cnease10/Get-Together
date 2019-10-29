@@ -6,26 +6,29 @@
     <title>Group Edit</title>
 </head>
 
-<body>
+<body id="groupEdit">
     <header>
         <h1>Edit <%=group.title%>'s Info</h1>
         <nav>
             <ul>
                 <li>
-                    <a href="/">Home</a>
+                    <a href="/groups/<%=group._id%>"> <button>Back</button> </a>
                 </li>
                 <li>
                     <a href="/groups">My Groups</a>
                 </li>
+                <li>
+                    <a href="/">Home</a>
+                </li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="groupEMain">
         <h2>Group Attributes:</h2>
         <form action="/groups/<%=group._id%>?_method=PUT" method="post">
-                Name of Group: <input type="text" name="name" value="<%=group.name%>" /><br />
-                Group Photo URL: <input type="text" name="groupPhoto" value="<%=group.groupPhoto%>" /><br />
-                <input type="submit" value="Edit Group" />
+                Edit name of group: <input type="text" name="name" value="<%=group.name%>" /><br />
+                Edit group photo URL: <input type="text" name="groupPhoto" value="<%=group.groupPhoto%>" /><br />
+                <button type="submit">Update Group</button>
             
         </form>
     </main>
