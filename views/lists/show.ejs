@@ -6,27 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>List Show</title>
 </head>
-<body>
+<body id="listShow">
     <header>
-        <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a>
-        <form action="/lists/<%=list.id%>?_method=DELETE" method="POST">
-            <button>Delete List</button>
-        </form>
-        <a href="/lists"><button>All Lists</button></a>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/lists">Back to <br> group lists</a>
+                </li>
+                <li>
+                    <!--Mike this is another spot where we will need to be
+                    specific about going back to the group associated
+                    with the list -->
+                    <a href="/groups">Back to <br> Get Together</a>
+                </li>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <main>
+    <main id="listSMain">
         <h1> <%= list.title%> </h1>
         <small>List from Group: <a href="/groups/<%=group._id%>"><%=group.name%></a></small>
-
+        
         <h2> Due: <%=list.dueDate%> </h2>
-
+        
         <ul>
             <%for (let i = 0; i < list.items.length; i++) { %>
                 <li>
                     <%=list.items[i] %>
                 </li>
-        <% } %>
+                <% } %>
         </ul>
+        <section>
+            <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a>
+            <form action="/lists/<%=list.id%>?_method=DELETE" method="POST">
+                <button type="submit">Delete List</button>
+            </form>
+        </section>
     </main>
 </body>
 </html>

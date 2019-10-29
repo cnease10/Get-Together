@@ -6,24 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body id="listIndex">
     <header>
-        <h1>List Index</h1>
-        <a href="/groups"><button>Back to<br>Get Together</button></a>
-        <a href="/lists/new"> <button>Create <br> a List</button> </a>
+        <h1>Lists</h1>
+        <nav>
+            <ul>
+                <li>
+                        <!-- Mike - when you are looking at this - I want a btn that goes
+                        back your group page that the list and recipe is in -->
+                    <a href="/groups"><button>Back to<br>Get Together</button></a>
+                </li>
+                <li>
+                    <a href="/lists/new"> <button>Create <br> a List</button> </a>
+                </li>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <h2>Lists</h2>
-    <ul>
-        <% for (let i =0; i < list.length; i++) { %>
-            <li>
-                <a href="/lists/<%=list[i]._id%>"><%=list[i].title%></a>
-                <form action="/lists/<%=list[i].id%>?_method=DELETE" method="POST">
-                    <button>Delete List</button>
-                </form>
-           </li>
-        <% } %>
-   
-    </ul>
-
+    <main id="listIMain">
+        <h2>Lists</h2>
+            <ul>
+                <% for (let i =0; i < list.length; i++) { %>
+                    <li>
+                        <a href="/lists/<%=list[i]._id%>"><%=list[i].title%></a>
+                        <form action="/lists/<%=list[i].id%>?_method=DELETE" method="POST">
+                            <button>Delete List</button>
+                         </form>
+                    </li>
+                <% } %>
+            </ul>
+    </main>
 </body>
 </html>

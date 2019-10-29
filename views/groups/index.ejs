@@ -6,22 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Groups</title>
 </head>
-<body>
-    
+<body id="groupIndex">
     <header>
         <h1>My Groups</h1>
         <nav>
             <ul>
                 <li>
-                    <a href="/">Home</a>
+                    <a href="/groups/new">Create a new Group</a>
                 </li>
                 <li>
-                    <a href="/groups/new">Create a new Group</a>
+                    <a href="/">Home</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="groupIMain">
         <h2>List of Groups</h2>
         <ul>
             <% for(let i = 0; i < groups.length; i++){ %>
@@ -31,10 +30,13 @@
                 <form method="POST" action="/groups/<%= groups[i]._id %>?_method=DELETE">
                     <button type="submit">Delete this Group</button>
                 </form>
-                <form action="/groups/<%=groups[i]._id%>/edit">
+                <!-- I don't think they need an edit button until they are 
+                inside of the group looking at it -->
+                <!-- <form action="/groups/<%=
+                // groups[i]._id
+                %>/edit">
                     <button type='submit'>Edit </button>
-                </form>
-
+                </form> -->
             </li>
             <% } %>
         </ul>

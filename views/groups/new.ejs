@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>New Group</title>
 </head>
-<body>
-
+<body id="groupNew">
     <header>
         <h1>Create a Group</h1>
         <nav>
@@ -21,15 +20,13 @@
             </ul>
         </nav>
     </header>
-
-    <main>
+    <main id="groupNMain">
         <form action="/groups" method="post">
-            Name of Group: <input type="text" name="name" /><br />
-            Today's Date: <input type="date" name="dateStarted" /><br />
-            Group Photo URL: <input type="text" name="groupPhoto" /><br />
-            <input type="submit" value="Create Group" />
+            Give your group a name: <input type="text" name="name" /><br />
+            Give a group start date: <input type="date" name="dateStarted" /><br />
+            Give your group a photo URL: <input type="text" name="groupPhoto" /><br />
+                <button type="submit">Create Group</button>
         </form>
     </main>
-    
 </body>
 </html>

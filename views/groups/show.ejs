@@ -6,31 +6,57 @@
     <title></title>
 </head>
 
-<body>
+<body id="groupShow">
     <header>
         <nav>
             <ul>
                 <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
                     <a href="/groups">My Groups</a>
                 </li>
-                <li>
-                    <a href="/lists">Lists</a>
+                <!-- <li> -->
+                    <!-- Mike on the lists and recipes for this group show
+                    page - we want to link it to only
+                    lists and recipes that are related to the group
+                    right? If we do this, i think the links should be on
+                    the page and not in the header to make them into the 
+                    boxes we were talking about moving down for the time
+                    being -->
+                
+                    <!-- <a href="/lists">Lists</a>
                 </li>
                 <li>
                     <a href="/recipes">Recipes</a>
+                </li> -->
+                <li>
+                    <a href="/">Home</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="groupSMain"> 
         <h1><%=group.name%></h1>
         <h4>Group formed on <%=group.dateStarted%></h4>
         <section>
             <img src="<%=group.groupPhoto%>">
         </section>
+        <!-- this is where I added some things -->
+        <div>
+            <%for (let i = 0; i < group.photos.length; i++) { %>
+                <img src="<%=group.photos[i]%>">
+            <% } %>
+        </div>
+        <div>
+            <a href="/recipes">Group Recipes</a>
+        </div>
+        <div>
+            <a href="/lists">Group Lists</a>
+        </div>
+        <aside>
+            <a href="/groups/<%=group._id%>/edit">Edit Group</a>
+            <form action="/groups/<%=group._id%>?_method=DELETE" method="post">
+                <button type="submit">Delete Group</button>
+            </form>
+        </aside>
     </main>
 </body>
 
