@@ -19,6 +19,7 @@ app.use(session({
   }));
 
   //middleware
+app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 
