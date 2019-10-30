@@ -12,7 +12,7 @@ const Group = require("../models/groups")
 
 // const User = require('..models/users');
 
-//index route   MIKE
+//index route   
 router.get('/', async (req, res) => {
 	try{
 		const foundRecipes = await Recipe.find({})
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 });		
 	
 
-//new route   MIKE
+//new route   
 router.get('/new', async (req, res) => {
 	try{
 		const allGroups = await Group.find({})
@@ -41,7 +41,7 @@ router.get('/new', async (req, res) => {
 
 
 
-//show route   MIKE
+//show route   
 router.get('/:id', async (req, res) => {
 	try {
 		const foundGroup = await Group.findOne({"recipes": req.params.id})
@@ -60,7 +60,7 @@ router.get('/:id', async (req, res) => {
 
 
 
-//create route   MIKE
+//create route   
 router.post('/', async (req, res) => {
 	try {
 		const createdRecipe = await Recipe.create(req.body);
@@ -77,7 +77,7 @@ router.post('/', async (req, res) => {
 
 
 
-//edit route   MIKE
+//edit route   
 router.get('/:id/edit', async (req, res) => {
 	try { 
 		const allGroups = await Group.find({})
@@ -96,7 +96,7 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 
-//update route   MIKE
+//update route   
 router.put('/:id', async (req, res) => {
 	try{
 		const foundGroup = Group.findOne({"recipes": req.params.id})
@@ -118,7 +118,7 @@ router.put('/:id', async (req, res) => {
 	}
 })
 
-//delete/destroy route MIKE
+//delete/destroy route 
 router.delete('/:id', async (req, res) => {
 	try {
 		const deletedRecipe = await Recipe.findByIdAndRemove(req.params.id)

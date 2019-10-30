@@ -44,16 +44,15 @@
             <img src="<%=group.groupPhoto%>">
         </section>
         <!-- this is where I added some things -->
-        <div>
-            <%for (let i = 0; i < group.photos.length; i++) { %>
-                <img src="<%=group.photos[i]%>">
-            <% } %>
-        </div>
+       
         <div>
             <a href="/recipes">Group Recipes</a>
         </div>
         <div>
             <a href="/lists">Group Lists</a>
+        </div>
+        <div>
+            <a href="/pics">Group Pictures</a>
         </div>
         <aside>
             <a href="/groups/<%=group._id%>/edit">Edit Group</a>
