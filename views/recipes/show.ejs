@@ -13,16 +13,16 @@
       <nav>
         <ul>
           <li>
-            <a href="/recipes">Back to <br> group recipes</a>
+            <a href="/recipes"><button>Back to <br> group recipes</button></a>
           </li>
           <li>
             <!--Mike this is another spot where we will need to be
                     specific about going back to the group associated
                     with the recipe -->
-              <a href="/groups">My Groups</a>
+              <a href="/groups"><button>My Groups</button></a>
           </li>
           <li>
-            <a href="/">Home</a>
+            <a href="/"><button>Logout</button></a>
           </li>
         </ul>
       </nav>
@@ -33,16 +33,21 @@
         Recipe from group: 
         <a href="/groups/<%=group._id%>"><%=group.name%></a>
       </small>
-      <section><a href="/recipes/<%=recipe._id%>"><%=recipe.title%></a>
+      <!-- <section><a href="/recipes/<%=
+      // recipe._id
+      %>">
+      <%=
+      // recipe.title
+      %></a>
+      </section> -->
+      <section>
+        Ingriedients: <%=recipe.ingredients%>
       </section>
       <section>
-        <%=recipe.ingredients%>
+        Instructions: <%=recipe.instructions%>
       </section>
       <section>
-        <%=recipe.instructions%>
-      </section>
-      <section>
-        <%=recipe.comments%>
+        Comments: <%=recipe.comments%>
       </section>
       <section>
         <a href="/recipes/<%=recipe._id%>/edit">Edit Recipe</a>

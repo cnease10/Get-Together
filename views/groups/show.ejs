@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="/groups">My Groups</a>
+                    <a href="/groups"><button>My Groups</button></a>
                 </li>
                 <!-- <li> -->
                     <!-- Mike on the lists and recipes for this group show
@@ -32,7 +32,7 @@
                     <a href="/recipes">Recipes</a>
                 </li> -->
                 <li>
-                    <a href="/">Home</a>
+                    <a href="/"><button>Logout</button></a>
                 </li>
             </ul>
         </nav>
@@ -46,16 +46,16 @@
         <!-- this is where I added some things -->
        
         <div>
-            <a href="/recipes">Group Recipes</a>
+            <a href="/recipes"><button>Group Recipes</button></a>
         </div>
         <div>
-            <a href="/lists">Group Lists</a>
+            <a href="/lists"><button>Group Lists</button></a>
         </div>
         <div>
-            <a href="/pics">Group Pictures</a>
+            <a href="/pics"><button>Group Pictures</button></a>
         </div>
         <aside>
-            <a href="/groups/<%=group._id%>/edit">Edit Group</a>
+            <a href="/groups/<%=group._id%>/edit"><button>Edit Group</button></a>
             <form action="/groups/<%=group._id%>?_method=DELETE" method="post">
                 <button type="submit">Delete Group</button>
             </form>
