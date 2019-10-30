@@ -4,7 +4,7 @@ const groupSchema = new mongoose.Schema({
     name: {type:String, required: true},
     dateStarted: {type: Date, required: true},
     groupPhoto: {type: String, required: true},
-    photos: [{
+    pics: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pic'
     }],

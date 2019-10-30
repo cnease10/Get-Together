@@ -28,53 +28,36 @@ router.get('/new', async (req, res) => {
     }
 });
 
-//LIST SHOW    
-router.get('/:id', async (req, res) => {
-    try {
-        const foundGroup = await Group.findOne({ 'lists': req.params.id })
-            .populate(
-                {
-                    path: 'lists',
-                    match: { _id: req.params.id }
-                })
-            .exec()
-        res.render('lists/show.ejs', {
-            list: foundGroup.lists[0],
-            group: foundGroup
-        })
+//LIST SHOW     DONT NEED??
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const foundGroup = await Group.findOne({ 'lists': req.params.id })
+//             .populate(
+//                 {
+//                     path: 'lists',
+//                     match: { _id: req.params.id }
+//                 })
+//             .exec()
+//         res.render('lists/show.ejs', {
+//             list: foundGroup.lists[0],
+//             group: foundGroup
+//         })
+//     } catch (err) {
+//         res.send(err);
+//     }
+// });
 
-
-
-        //sierras
-        // const foundList = await List.findById(req.params.id);
-        // List.items
-    } catch (err) {
-        res.send(err);
-    }
-});
-
-//LIST CREATE   
+//Pic CREATE   
 router.post('/', async (req, res) => {
     try {
-
-        //sierras
-        const trimmedItems = req.body.items.replace(/\s+/g, '');
-        // console.log(trimmedItems);
-        const separatedItems = trimmedItems.split(',');
-        // console.log()
-        const newList = {
-            title: req.body.title,
-            items: separatedItems,
-            dueDate: req.body.dueDate
-        };
-        const createdList = await List.create(newList);
+        const createdPic = await Pic.create(req.body);
+        console.log(`CREATED PIC`, createdPic)
 
         const foundGroup = await Group.findById(req.body.groupId);
-
-        foundGroup.lists.push(createdList)
+        foundGroup.pics.push(createdPic)
         await foundGroup.save();
         console.log(foundGroup)
-        res.redirect('/lists');
+        res.redirect('/pics');
     } catch (err) {
         res.send(err);
     }
