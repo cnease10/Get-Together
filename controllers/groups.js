@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         console.log(`FOUND USER`, foundUser)
 
 
-        const foundGroups = await Group.find({}); //not needed?
+        // const foundGroups = await Group.find({}); //not needed?
         res.render('groups/index.ejs', {
             groups: foundUser.groups,
             username: req.session.username,

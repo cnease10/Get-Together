@@ -2,11 +2,22 @@ const express = require('express');
 const router = express.Router();
 const List = require('../models/lists.js');
 const Group = require('../models/groups.js');
-
+const User = require('../models/users.js');
 
 //LIST INDEX   
 router.get('/', async (req, res) => {
     try {
+        //NOT WORKING, display only this groups recipes
+        // const foundUser = await User.findOne({ 'username': req.session.username })
+        //     .populate(
+        //         {
+        //             path: 'groups',
+        //             match: { _id: req.params.id }
+        //         })
+        //     .exec()       
+        // const foundLists = await foundUser.groups[0].lists
+            // console.log(`FOUND LISTS`, foundList)
+
         const foundLists = await List.find({});
         res.render('lists/index.ejs', {
             list: foundLists
@@ -57,7 +68,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
 
-        //sierras
+        //Cierras
         const trimmedItems = req.body.items.replace(/\s+/g, '');
         // console.log(trimmedItems);
         const separatedItems = trimmedItems.split(',');
@@ -73,7 +84,7 @@ router.post('/', async (req, res) => {
 
         foundGroup.lists.push(createdList)
         await foundGroup.save();
-        console.log(foundGroup)
+        console.log(`NEW LIST IN GROUP`, foundGroup)
         res.redirect('/lists');
     } catch (err) {
         res.send(err);
