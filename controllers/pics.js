@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
     }
 });
 
-//LIST NEW   
+//Pics NEW   
 router.get('/new', async (req, res) => {
     try {
         const allGroups = await Group.find()
-        res.render('lists/new.ejs', {
+        res.render('pics/new.ejs', {
             groups: allGroups
         });
     } catch (err) {
