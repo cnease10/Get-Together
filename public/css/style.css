@@ -161,6 +161,18 @@ font-size: 2em;
 
 }
 
+.mainejs {
+	display: grid;
+	grid-template-columns: 2fr 4fr 4fr 2fr;
+	grid-template-rows: 1fr 4fr 4fr 1fr;
+	grid-template-areas: 
+	"ejsheading ejsheading . ."
+	"ejsnav content1 content2 ."
+	"ejsnav content3 content4 ."
+	". . . ejslogo"
+}
+
+
 /*VIEWS*/
 /*--------GROUPS----------*/
 
