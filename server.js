@@ -36,6 +36,9 @@ app.use('/auth', usersController);
 const recipesController = require('./controllers/recipes.js');
 app.use('/recipes', recipesController);
 
+const picsController = require('./controllers/pics.js');
+app.use('/pics', picsController);
+
 
 // home page
 app.get('/', (req, res) => {

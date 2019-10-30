@@ -4,11 +4,7 @@ const List = require('../models/lists.js');
 const Group = require('../models/groups.js');
 
 
-//need to think about if this file needs to be relational
-//ex: const name = require('../models/name.js');
-//need routes
-
-//LIST INDEX   MIKE
+//LIST INDEX   
 router.get('/', async (req, res) => {
     try {
         const foundLists = await List.find({});
@@ -20,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-//LIST NEW   MIKE
+//LIST NEW   
 router.get('/new', async (req, res) => {
     try {
         const allGroups = await Group.find()
@@ -32,7 +28,7 @@ router.get('/new', async (req, res) => {
     }
 });
 
-//LIST SHOW    MIKE
+//LIST SHOW    
 router.get('/:id', async (req, res) => {
     try {
         const foundGroup = await Group.findOne({ 'lists': req.params.id })
@@ -57,7 +53,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-//LIST CREATE   MIKE
+//LIST CREATE   
 router.post('/', async (req, res) => {
     try {
 
@@ -84,7 +80,7 @@ router.post('/', async (req, res) => {
     } 
 });
 
-//LIST EDIT   MIKE
+//LIST EDIT   
 router.get('/:id/edit', async (req, res) => {
     try {
         const allGroups = await Group.find({})
@@ -108,7 +104,7 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 
-//LIST UPDATE   MIKE
+//LIST UPDATE   
 router.put('/:id', async (req, res) => {
     try {
         const foundGroup = Group.findOne({ 'lists': req.params.id });
@@ -145,7 +141,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-//LIST DELETE   MIKE
+//LIST DELETE   
 router.delete('/:id', async (req, res) => {
     try {
         const deletedList = await List.findByIdAndRemove(req.params.id);
