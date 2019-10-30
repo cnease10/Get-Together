@@ -37,6 +37,7 @@
             <% for (let i = 0; i < pic.length; i++) { %>
             <li>
                 <img src="<%=pic[i].url%>">
+                <p><%= pic[i].caption %></p>
                 <form action="/pics/<%=pic[i].id%>?_method=DELETE" method="POST">
                     <button>Delete Picture</button>
                 </form>

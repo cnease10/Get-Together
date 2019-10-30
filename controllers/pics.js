@@ -28,7 +28,7 @@ router.get('/new', async (req, res) => {
     }
 });
 
-//LIST SHOW     DONT NEED??
+//LIST SHOW     DONT NEED??  need updating
 // router.get('/:id', async (req, res) => {
 //     try {
 //         const foundGroup = await Group.findOne({ 'lists': req.params.id })
@@ -56,83 +56,83 @@ router.post('/', async (req, res) => {
         const foundGroup = await Group.findById(req.body.groupId);
         foundGroup.pics.push(createdPic)
         await foundGroup.save();
-        console.log(foundGroup)
+        console.log(`ARE THERE PICS IN THE GROUP PICS ARRAY??`, foundGroup)
         res.redirect('/pics');
     } catch (err) {
         res.send(err);
     }
 });
 
-//LIST EDIT   
-router.get('/:id/edit', async (req, res) => {
-    try {
-        const allGroups = await Group.find({})
+//LIST EDIT   NEED??  needs updating
+// router.get('/:id/edit', async (req, res) => {
+//     try {
+//         const allGroups = await Group.find({})
 
-        const foundListGroup = await Group.findOne({ 'lists': req.params.id })
-            .populate({ path: 'lists', match: { _id: req.params.id } })
-            .exec()
-        res.render('lists/edit.ejs', {
-            list: foundListGroup.lists[0],
-            groups: allGroups,
-            listGroup: foundListGroup
-        });
-        // const foundList = await List.findById(req.params.id);
-        // res.render('lists/edit.ejs', {
-        //     list: foundList
-        // });
-        // console.log(foundList);
-    } catch (err) {
-        res.send(err);
-    }
-});
+//         const foundListGroup = await Group.findOne({ 'lists': req.params.id })
+//             .populate({ path: 'lists', match: { _id: req.params.id } })
+//             .exec()
+//         res.render('lists/edit.ejs', {
+//             list: foundListGroup.lists[0],
+//             groups: allGroups,
+//             listGroup: foundListGroup
+//         });
+//         // const foundList = await List.findById(req.params.id);
+//         // res.render('lists/edit.ejs', {
+//         //     list: foundList
+//         // });
+//         // console.log(foundList);
+//     } catch (err) {
+//         res.send(err);
+//     }
+// });
 
 
-//LIST UPDATE   
-router.put('/:id', async (req, res) => {
-    try {
-        const foundGroup = Group.findOne({ 'lists': req.params.id });
-        console.log(`FOUND GROUP`, foundGroup)
+//LIST UPDATE    NEED?? nnews updating
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const foundGroup = Group.findOne({ 'lists': req.params.id });
+//         console.log(`FOUND GROUP`, foundGroup)
 
-        const trimmedItems = req.body.items.replace(/\s+/g, '');
-        console.log(`TRIMMED`, trimmedItems);
-        const separatedItems = trimmedItems.split(',');
-        const newList = {
-            title: req.body.title,
-            items: separatedItems,
-            dueDate: req.body.dueDate
-        }
-        // console.log(`NEWLIST`, newList)
-        // console.log(`REQBODY`, req.body)
-        const updatedList = List.findByIdAndUpdate(req.params.id, newList, { new: true })
-        const [updateList, findGroup] = await Promise.all([updatedList, foundGroup])
-        // console.log(`UpdateList`, updateList)
-        // console.log(`findgroup`, findGroup)
+//         const trimmedItems = req.body.items.replace(/\s+/g, '');
+//         console.log(`TRIMMED`, trimmedItems);
+//         const separatedItems = trimmedItems.split(',');
+//         const newList = {
+//             title: req.body.title,
+//             items: separatedItems,
+//             dueDate: req.body.dueDate
+//         }
+//         // console.log(`NEWLIST`, newList)
+//         // console.log(`REQBODY`, req.body)
+//         const updatedList = List.findByIdAndUpdate(req.params.id, newList, { new: true })
+//         const [updateList, findGroup] = await Promise.all([updatedList, foundGroup])
+//         // console.log(`UpdateList`, updateList)
+//         // console.log(`findgroup`, findGroup)
 
-        if (findGroup._id.toString() != req.body.groupId) {
-            findGroup.lists.remove(req.params.id);
-            await findGroup.save();
-            const newGroup = await Group.findById(req.body.groupId);
-            newGroup.lists.push(updateList);
-            const savedNewGroup = await newGroup.save();
-            res.redirect('/lists/' + req.params.id);
-        } else {
-            console.log('else statement')
-            res.redirect('/lists/' + req.params.id);
-        }
-    } catch (err) {
-        res.send(err);
-    }
-});
+//         if (findGroup._id.toString() != req.body.groupId) {
+//             findGroup.lists.remove(req.params.id);
+//             await findGroup.save();
+//             const newGroup = await Group.findById(req.body.groupId);
+//             newGroup.lists.push(updateList);
+//             const savedNewGroup = await newGroup.save();
+//             res.redirect('/lists/' + req.params.id);
+//         } else {
+//             console.log('else statement')
+//             res.redirect('/lists/' + req.params.id);
+//         }
+//     } catch (err) {
+//         res.send(err);
+//     }
+// });
 
-//LIST DELETE   
+//Pic DELETE   
 router.delete('/:id', async (req, res) => {
     try {
-        const deletedList = await List.findByIdAndRemove(req.params.id);
-        const foundGroup = await Group.findOne({ 'lists': req.params.id });
-        foundGroup.lists.remove(req.params.id);
+        const deletedPic = await Pic.findByIdAndRemove(req.params.id);
+        const foundGroup = await Group.findOne({ 'pics': req.params.id });
+        foundGroup.pics.remove(req.params.id);
         await foundGroup.save()
-        console.log(`CHECK IF LISTS GONE`, foundGroup)
-        res.redirect('/lists');
+        console.log(`CHECK IF PICS GONE`, foundGroup)
+        res.redirect('/pics');
     } catch (err) {
         res.send(err);
     }
