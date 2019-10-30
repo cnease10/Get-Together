@@ -8,9 +8,22 @@ const User = require("../models/users");
 //index route  need to make sure it finds only the CURRENT users groups
 router.get('/', async (req, res) => {
     try {
-        const foundGroups = await Group.find({});
+        const foundUser = await User.findOne({ 'username': req.session.username })
+            .populate(
+                {
+                    path: 'groups',
+                    match: { _id: req.params.id }
+                })
+            .exec()
+        console.log(`FOUND USER`, foundUser)
+
+
+        // const foundGroups = await Group.find({}); //not needed?
         res.render('groups/index.ejs', {
-            groups: foundGroups
+            groups: foundUser.groups,
+            username: req.session.username,
+            message: req.session.message,
+            logged: req.session.logged
         });
     } catch (err) {
         res.send(err);
@@ -50,7 +63,7 @@ router.get('/:id', async (req, res) => {
             .exec()
         res.render('groups/show.ejs', {
             user: foundUser,
-            group: foundUser.groups[0]
+            group: foundUser.groups[0],
         });
         console.log(foundUser)
     } catch (err) {

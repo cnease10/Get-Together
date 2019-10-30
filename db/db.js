@@ -3,11 +3,6 @@ const mongoose = require('mongoose');
 const connectionString = 'mongodb://localhost/getTogether';
 
 
-// second argument, options object, we set
-// certain properties to true or false to do thing
-// things that we are doing is silencing depraction warnings
-// and setting for the transition of the mongoose module from
-// one version to another
 mongoose.connect(connectionString, { useNewUrlParser: true,
                                      useUnifiedTopology: true,
                                      useCreateIndex: true,
