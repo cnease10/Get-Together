@@ -162,17 +162,50 @@ font-size: 2em;
 }
 
 .mainejs {
+	background-color: #CBD0D8;
+	color: #333D51;
 	display: grid;
-	grid-template-columns: 2fr 4fr 4fr 2fr;
-	grid-template-rows: 1fr 4fr 4fr 1fr;
-	grid-template-areas: 
+	grid-template-columns: 2fr 4fr 2fr;
+	grid-template-rows: 1fr 2fr 2fr 1fr;
+	/* grid-template-areas: 
 	"ejsheading ejsheading . ."
 	"ejsnav content1 content2 ."
 	"ejsnav content3 content4 ."
-	". . . ejslogo"
+	". . . ejslogo" */
 }
 
+.heading {
+	display: inline-block;
+	color: #D3AC2B;
+	grid-column: 1/4;
+	grid-row: 1/2;
+	font-size: 40px;
+	margin: 30px;
+	height: 20px;
 
+}
+
+li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration:  none;
+}
+
+nav {
+	grid-area: ejsnav;
+	padding: 10px;
+	margin: 10px;
+	grid-row: 2/3;
+	grid-column: 1/2;
+}
+
+button {
+	border-radius: 8px;
+}
 /*VIEWS*/
 /*--------GROUPS----------*/
 
