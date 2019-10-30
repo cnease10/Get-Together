@@ -44,6 +44,7 @@ app.use('/pics', picsController);
 app.get('/', (req, res) => {
   console.log(req.session, 'home route')
   res.render('homeIndex.ejs', {
+    username:req.session.username,
     message: req.session.message,
     logged: req.session.logged
   })

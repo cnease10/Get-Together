@@ -12,35 +12,29 @@
 </head>
 <body id="groupIndex" class="mainejs">
     <header>
-        <h1 class="heading">My Groups</h1>
+        <h1 class="heading">Get Together</h1>
         <nav>
             <ul class="navUl">
+                
+                <% if(logged === true){ %>
+                    <li>Logged in as <%= username %></li>
+                    <li><button><a href="/auth/logout">Logout</a></button></li>
+                <%}%>
+                    
                 <li>
                     <a href="/groups/new"><button>Create a new Group</button></a>
-                </li>
-                <li>
-                    <a href="/"><button>Logout</button></a>
                 </li>
             </ul>
         </nav>
     </header>
+    
     <main id="groupIMain">
-        <h2 class="heading">List of Groups</h2>
+        <h2 class="heading"><%=username%>'s Get Togethers</h2>
         <ul>
             <% for(let i = 0; i < groups.length; i++){ %>
             <li>
-                <a href="/groups/<%=groups[i]._id%>"><%=groups[i].name%></a>
-
-                <form method="POST" action="/groups/<%= groups[i]._id %>?_method=DELETE">
-                    <button type="submit">Delete this Group</button>
-                </form>
-                <!-- I don't think they need an edit button until they are 
-                inside of the group looking at it -->
-                <!-- <form action="/groups/<%=
-                // groups[i]._id
-                %>/edit">
-                    <button type='submit'>Edit </button>
-                </form> -->
+                <a href="/groups/<%=groups[i]._id%>"><%=groups[i].name%></a><br>
+                <img style="width:150px;" src="<%= groups[i].groupPhoto %>">
             </li>
             <% } %>
         </ul>
