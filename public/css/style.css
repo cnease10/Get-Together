@@ -193,6 +193,8 @@ li {
 
 a {
 	text-decoration:  none;
+	color: #333D51;
+	font-weight: bold;
 }
 
 nav {
@@ -253,17 +255,20 @@ button {
 
 /*show.ejs*/
 
-/*. {
+/* .groupPhoto {
+	height: 250px;
+	width: 350px;
+} */
 
-}*/
-
-/*. {
-
+.crop {
+	height: 300px;
+	width: 400px;
+	overflow: hidden;
+   }
+.crop img {
+	height: auto;
+	width: 400px;
 }
-
-. {
-
-}*/
 
 /*--------LISTS---------*/
 
