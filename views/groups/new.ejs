@@ -12,7 +12,7 @@
 </head>
 <body id="groupNew" class="mainejs">
     <header>
-        <h1 class="heading">Create a Group</h1>
+        <h1 class="primaryHeading">Create a Group</h1>
         <nav>
             <ul class="navUl">
                 <li>
@@ -24,11 +24,11 @@
             </ul>
         </nav>
     </header>
-    <main id="groupNMain">
+    <main class="groupMainContent" id="groupNMain">
         <form action="/groups" method="post">
-            Give your group a name: <input type="text" name="name" /><br />
-            Give a group start date: <input type="date" name="dateStarted" /><br />
-            Give your group a photo URL: <input type="text" name="groupPhoto" /><br />
+            Give your group a name: <input type="text" name="name" /><br /><br>
+            Give a group start date: <input type="date" name="dateStarted" /><br /><br>
+            Give your group a photo URL: <input type="text" name="groupPhoto" /><br /><br>
                 <button type="submit">Create Group</button>
         </form>
     </main>

@@ -29,11 +29,10 @@
             </ul>
         </nav>
     </header>
-    <main id="listSMain">
-        <h1 class="heading"> <%= list.title%> </h1><br>
+        <h1 class="primaryHeading"> <%= list.title%> </h1><br>
+    <main class="showMain" id="listSMain">
         <small>List from Group: <a href="/groups/<%=group._id%>"><%=group.name%></a></small>
         
-        <h2 class="heading"> Due: <%=list.dueDate%> </h2>
         
         <ul>
             <%for (let i = 0; i < list.items.length; i++) { %>
@@ -49,5 +48,6 @@
             </form>
         </section>
     </main>
+        <h2 style="font-size: 135%;" class="ejsFooter"> Due: <%=list.dueDate%> </h2>
 </body>
 </html>

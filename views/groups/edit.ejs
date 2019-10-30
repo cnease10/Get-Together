@@ -12,7 +12,7 @@
 
 <body id="groupEdit" class="mainejs">
     <header >
-        <h1 class="heading">Edit <%=group.title%>'s Info</h1>
+        <h1 class="primaryHeading">Edit <%=group.title%>'s Info</h1>
         <nav>
             <ul class="navUl">
                 <li>
@@ -27,7 +27,7 @@
             </ul>
         </nav>
     </header>
-    <main id="groupEMain">
+    <main class="groupMainContent" id="groupEMain">
         <h2 class="heading">Group Attributes:</h2>
         <form action="/groups/<%=group._id%>?_method=PUT" method="post">
                 Edit name of group: <input type="text" name="name" value="<%=group.name%>" /><br />

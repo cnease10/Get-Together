@@ -4,7 +4,7 @@ body {
 }
 
 
-/*---------homeIndex-----------.ejs*/
+/*---------home-Index-begin-----------.ejs*/
 
 .mainContainer {
 	display: grid;
@@ -161,27 +161,37 @@ font-size: 2em;
 
 }
 
+/*---------home-Index-end-----------.ejs*/
+
+/*---------inside-groups-lists-recipes-begin-----.ejs*/
 .mainejs {
 	background-color: #CBD0D8;
 	color: #333D51;
 	display: grid;
+	width: 100%;
+	height: auto;
 	grid-template-columns: 2fr 4fr 2fr;
 	grid-template-rows: 1fr 2fr 2fr 1fr;
-	/* grid-template-areas: 
-	"ejsheading ejsheading . ."
-	"ejsnav content1 content2 ."
-	"ejsnav content3 content4 ."
-	". . . ejslogo" */
+	 grid-template-areas: 
+	"ejsheading ejsheading ejsheading"
+	"ejsnav ejscontent ejsotherContent"
+	"ejsnav ejscontent ejsotherContent"
+	"ejsfooter ejsfooter ejsfooter-r" 
 }
 
-.heading {
+.primaryHeading {
 	display: inline-block;
 	color: #D3AC2B;
-	grid-column: 1/4;
-	grid-row: 1/2;
+	grid-area: ejsheading;
 	font-size: 40px;
 	margin: 30px;
-	height: 20px;
+	width: 100%;
+	position: absolute;
+	background-color: #333D51;
+	border-width: 5px;
+	border-style: double;
+	border-color: #F4F3EA;
+	padding: 15px;
 
 }
 
@@ -198,67 +208,15 @@ a {
 }
 
 nav {
-	grid-area: ejsnav;
 	padding: 10px;
 	margin: 10px;
-	grid-row: 2/3;
-	grid-column: 1/2;
+	
 }
 
 button {
 	border-radius: 8px;
 }
-/*VIEWS*/
-/*--------GROUPS----------*/
 
-/*edit.ejs*/
-
-/*. {
-
-}*/
-
-/*. {
-
-}
-
-. {
-
-}*/
-
-/*index.ejs*/
-
-/*. {
-
-}
-
-. {
-
-}
-
-. {
-
-}*/
-
-/*new.ejs*/
-
-/*. {
-
-}
-
-. {
-
-}
-
-. {
-
-}*/
-
-/*show.ejs*/
-
-/* .groupPhoto {
-	height: 250px;
-	width: 350px;
-} */
 
 .crop {
 	height: 300px;
@@ -270,120 +228,68 @@ button {
 	width: 400px;
 }
 
-/*--------LISTS---------*/
 
-/*edit.ejs*/
 
-/*. {
-
-}
-
-. {
-
-}
-
-. {
-
-}*/
-
-/*index.ejs*/
-
-/*. {
+.mainContent {
+	grid-area: ejscontent;
+	margin: 10px;
+	text-align: center;
+	border-style: double;
+	background-color: #F4F3EA;
+	height: 50%;
 
 }
 
-. {
+.ejsFooter {
+	grid-area: ejsfooter;
+}
+
+.groupMainContent {
+	padding: 70px;
+	grid-area: ejscontent;
+	border-style: double;
+	border-color: #D3AC2B;
+	text-align: center;
+}
+
+.groupOtherContent {
+	grid-area: ejsnav;
 
 }
 
-. {
-
-}*/
-
-
-/*new.ejs*/
-
-/*. {
-
+.groupNameAnchor {
+	color: #D3AC2B; 
+	font-size: 150%; 
+	border-style: double;
+	border-color: #333D51;
+	padding: 2px;
 }
 
-. {
-
+.groupImg {
+	border-style: solid;
+	border-width: 5px;
+	border-color: #333D51;
+	padding: 2px;
+	margin: 25px;
+	
 }
 
-. {
-
-}*/
-
-/*show.ejs*/
-
-/*. {
-
+.groupShowPic {
+	max-width: 100%;
+	height: auto;
+	border-radius: 50%;
 }
 
-. {
-
+.groupLinks {
+	text-align: center;
 }
 
-. {
-
-}*/
-
-/*-------RECIPES--------*/
-
-/*edit.ejs*/
-
-/*. {
-
+.recShowSmall {
+	color: #D3AC2B;
+	font-size: 120%;
 }
 
-. {
-
-}
-
-. {
-
-}*/
-
-/*index.ejs*/
-
-/*. {
-
-}
-
-. {
-
-}
-
-. {
-
-}*/
-
-/*new.ejs*/
-
-/*. {
-
-}
-
-. {
-
-}
-
-. {
-
-}*/
-
-/*show.ejs*/
-
-/*.recShowBody {
 
 
-}*/
+/*---------inside-groups-lists-recipes-end-----.ejs*/
 
-/*. {
-
-}
-
-. {
-
-}*/

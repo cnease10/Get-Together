@@ -26,17 +26,22 @@
             </ul>
         </nav>
     </header>
-      <main id="recNMain">
+      <main class="mainContent" id="recNMain">
           <form action='/recipes' method='POST'>
             Which group does this Recipe belong to: <select name="groupId">
               <% for(let i = 0; i < groups.length; i++) { %>
               <option value="<%=groups[i]._id%>"><%=groups[i].name%></option>
               <% } %>
             </select><br />
+            <br>
             Give your recipe a name: <input type="text" name="title"><br>
+            <br>
             Give your recipe ingredients: <input type="text" name="ingredients"><br>
+            <br>
             Give your recipe instructions: <input type="text" name="instructions"><br>
+            <br>
             Make comments: <input type="text" name="comments"><br>
+            <br>
               <button type="submit">Create Recipe</button>
           </form>
       </main>

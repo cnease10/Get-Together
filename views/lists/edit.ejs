@@ -12,7 +12,7 @@
 </head>
 <body id="listEdit" class="mainejs">
     <header>
-        <h1 class="heading">Edit <%=list.title%> list</h1>
+        <h1 class="primaryHeading">Edit <%=list.title%> list</h1>
             <nav>
                 <ul class="navUl">
                     <li>
@@ -28,9 +28,9 @@
             </nav>  
     </header>
 
-    <main id="listEMain">
-        <h2 class="heading">List Attributes</h2>
+    <main class="mainContent" id="listEMain">
 
+        <h2 class="">Edit your list:</h2>
         <form action="/lists/<%=list._id%>?_method=PUT" method="POST">
             Select which group the list belongs: <select name="groupId">
                 <% for(let i = 0; i < groups.length; i++) { %>
@@ -40,10 +40,14 @@
                 </option>
                 <% } %>
             </select><br />
+            <br>
             Edit list title: <input type="text" name="title" value="<%=list.title%>"> <br>
+            <br>
             Edit list items: <input type="text" name="items" value="<%=list.items%>"> <br>
+            <br>
             Edit list due date: <input type="text" name="dueDate" value="<%=list.dueDate%>"> <br>
-            <button type="submit">Update List</button>
+            <br>
+            <button style type="submit">Update List</button>
         </form>
     </main>
 </body>
