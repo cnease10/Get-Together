@@ -13,7 +13,7 @@
 <body class="grShowBody" id="groupShow" class="mainejs">
     <header>
         <nav>
-            <ul>
+            <ul class="navUl">
                 <li>
                     <a href="/groups"><button>My Groups</button></a>
                 </li>
@@ -39,10 +39,10 @@
     </header>
     <main id="groupSMain"> 
         <h1 class="heading"><%=group.name%></h1>
-        <h4 class="heading">Group formed on <%=group.dateStarted%></h4>
-        <section>
-            <img src="<%=group.groupPhoto%>">
+        <section class="crop">
+            <img class="groupPhoto" src="<%=group.groupPhoto%>">
         </section>
+        <h4 class="heading">Group formed on <%=group.dateStarted%></h4>
         <!-- this is where I added some things -->
        
         <div>
