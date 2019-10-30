@@ -33,7 +33,7 @@
         <h1 class="heading"> <%= list.title%> </h1>
         <small>List from Group: <a href="/groups/<%=group._id%>"><%=group.name%></a></small>
         
-        <h2> Due: <%=list.dueDate%> </h2>
+        <h2 class="heading"> Due: <%=list.dueDate%> </h2>
         
         <ul>
             <%for (let i = 0; i < list.items.length; i++) { %>
