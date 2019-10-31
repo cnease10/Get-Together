@@ -12,7 +12,7 @@
 </head>
 <body id="listNew" class="mainejs">
     <header>
-        <h1 class="heading">List New</h1>
+        <h1 class="primaryHeading">List New</h1>
         <nav>
             <ul class="navUl">
                 <li>
@@ -29,16 +29,16 @@
             </ul>
         </nav>
     </header>
-        <main id="listNMain">
-            <form action="/lists" method="POST">
+        <main class="mainContent" id="listNMain">
+            <form style="margin-top: 10px" action="/lists" method="POST">
                 Which Group does this list belong to: <select name="groupId">
                     <% for(let i = 0; i < groups.length; i++) { %>
                     <option value="<%=groups[i]._id%>"><%=groups[i].name%></option>
                     <% } %>
-                </select><br />
-                Give your list a title: <input type="text" name="title" > <br>
-                Give your list some items: <input type="text" name="items" placeholder="ex: food, games, drinks,"> use commas to separate items<br>
-                Give your list a due date: <input type="text" name="dueDate" placeholder="ex: 10/31/19"> <br>
+                </select><br /><br>
+                Give your list a title: <input type="text" name="title" > <br><br>
+                Give your list some items: <input type="text" name="items" placeholder="ex: food, games, drinks,"> use commas to separate items<br><br>
+                Give your list a due date: <input type="text" name="dueDate" placeholder="ex: 10/31/19"> <br><br>
                     <button type="submit">Create List</button>
             </form>
         </main>

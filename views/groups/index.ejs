@@ -11,8 +11,8 @@
     <title>Groups</title>
 </head>
 <body id="groupIndex" class="mainejs">
-    <header>
-        <h1 class="heading">Get Together</h1>
+    <h1 class="primaryHeading">Get Together</h1>
+    <header class="otherContent">
         <nav>
             <ul class="navUl">
                 
@@ -28,13 +28,13 @@
         </nav>
     </header>
     
-    <main id="groupIMain">
-        <h2 class="heading"><%=username%>'s Get Togethers</h2>
+    <main class="groupMainContent" id="groupIMain">
+        <h2 class=""><%=username%>'s Get Togethers</h2>
         <ul>
             <% for(let i = 0; i < groups.length; i++){ %>
             <li>
-                <a href="/groups/<%=groups[i]._id%>"><%=groups[i].name%></a><br>
-                <img style="width:150px;" src="<%= groups[i].groupPhoto %>">
+                <a class="groupNameAnchor" href="/groups/<%=groups[i]._id%>"><%=groups[i].name%></a><br>
+                <img class="groupImg" style="width:150px;" src="<%= groups[i].groupPhoto %>">
             </li>
             <% } %>
         </ul>

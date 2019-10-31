@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Neucha&display=swap" rel="stylesheet">
 
   </head>
-  <body class="mainejs" class="recShowBody" id="recShow">
+  <body class="mainejs" id="recShow">
     <header>
       <nav>
         <ul class="navUl">
@@ -27,34 +27,34 @@
         </ul>
       </nav>
     </header>
-    <main id="recSMain">
-      <h1 class="heading"><%=recipe.title%></h1>
-      <small>
-        Recipe from group: 
-        <a href="/groups/<%=group._id%>"><%=group.name%></a>
-      </small>
-      <!-- <section><a href="/recipes/<%=
-      // recipe._id
-      %>">
-      <%=
-      // recipe.title
-      %></a>
-      </section> -->
-      <section>
-        Ingriedients: <%=recipe.ingredients%>
-      </section>
-      <section>
-        Instructions: <%=recipe.instructions%>
-      </section>
-      <section>
-        Comments: <%=recipe.comments%>
-      </section>
-      <section>
-        <a href="/recipes/<%=recipe._id%>/edit">Edit Recipe</a>
-        <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post">
-          <button type="submit">Delete Recipe</button>
-        </form>
-      </section>
+        <h1 class="primaryHeading"><%=recipe.title%></h1>
+    <main class="mainContent" id="recShowMain">
+        <small class="recShowSmall">
+          Recipe from group: 
+          <a href="/groups/<%=group._id%>"><%=group.name%></a>
+        </small><br><br>
+        <!-- <section><a href="/recipes/<%=
+        // recipe._id
+        %>">
+        <%=
+        // recipe.title
+        %></a>
+        </section> -->
+        <section>
+          Ingriedients:<br> <%=recipe.ingredients%>
+        </section><br>
+        <section>
+          Instructions:<br> <%=recipe.instructions%>
+        </section><br>
+        <section>
+          Comments:<br><br> <%=recipe.comments%>
+        </section><br>
+        <section>
+          <a href="/recipes/<%=recipe._id%>/edit">Edit Recipe</a>
+          <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post"><br>
+            <button type="submit">Delete Recipe</button>
+          </form>
+        </section>
     </main>
   </body>
 </html>

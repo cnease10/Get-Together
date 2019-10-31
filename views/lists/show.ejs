@@ -11,43 +11,43 @@
     <title>List Show</title>
 </head>
 <body id="listShow" class="mainejs">
-    <header>
+    <header class="otherContent">
         <nav>
             <ul class="navUl">
                 <li>
                     <a href="/lists"><button>Back to <br> group lists</button></a>
-                </li>
+                </li><br>
                 <li>
                     <!--Mike this is another spot where we will need to be
                     specific about going back to the group associated
                     with the list -->
                     <a href="/groups"><button>Back to <br> Get Together</button></a>
-                </li>
+                </li><br>
                 <li>
                     <a href="/"><button>Logout</button></a>
                 </li>
             </ul>
         </nav>
     </header>
-    <main id="listSMain">
-        <h1 class="heading"> <%= list.title%> </h1><br>
+        <h1 class="primaryHeading"> <%= list.title%> </h1><br>
+    <main class="mainContent" id="listSMain">
         <small>List from Group: <a href="/groups/<%=group._id%>"><%=group.name%></a></small>
         
-        <h2 class="heading"> Due: <%=list.dueDate%> </h2>
         
         <ul>
             <%for (let i = 0; i < list.items.length; i++) { %>
                 <li>
                     <%=list.items[i] %>
-                </li>
+                </li><br>
                 <% } %>
         </ul>
         <section>
-            <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a>
-            <form action="/lists/<%=list.id%>?_method=DELETE" method="POST">
+            <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a><br>
+            <form action="/lists/<%=list.id%>?_method=DELETE" method="POST"><br>
                 <button type="submit">Delete List</button>
             </form>
         </section>
     </main>
+        <h2 style="font-size: 135%; color: red;" class="ejsFooter"> Due: <%=list.dueDate%> </h2>
 </body>
 </html>

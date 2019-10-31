@@ -10,9 +10,9 @@
     <title></title>
 </head>
 
-<body class="grShowBody" id="groupShow" class="mainejs">
+<body id="groupShow" class="mainejs">
     <header>
-        <nav>
+        <nav class="groupNavStuff">
             <ul class="navUl">
                 <li>
                     <a href="/"><button>Home Page</button></a>
@@ -23,29 +23,30 @@
             </ul>
         </nav>
     </header>
-    <main id="groupSMain"> 
-        <h1 class="heading"><%=group.name%></h1>
+        <h1 class="primaryHeading"><%=group.name%></h1>
+    <main class="groupMainContent" id="groupSMain"> 
         <section class="crop">
-            <img class="groupPhoto" src="<%=group.groupPhoto%>">
+            <img class="groupShowPic" src="<%=group.groupPhoto%>">
         </section>
         <h4 class="heading">Group formed on <%=group.dateStarted%></h4>
         <!-- this is where I added some things -->
-       
-        <div>
-            <a href="/recipes"><button>Group Recipes</button></a>
+        <div class="groupLinks">
+            <div>
+                <a href="/recipes"><button>Group Recipes</button></a>
+            </div><br>
+            <div>
+                <a href="/lists"><button>Group Lists</button></a>
+            </div><br>
+            <div>
+                <a href="/pics"><button>Group Pictures</button></a>
+            </div><br>
+            <aside>
+                <a href="/groups/<%=group._id%>/edit"><button>Edit Group</button></a><br><br>
+                <form action="/groups/<%=group._id%>?_method=DELETE" method="post">
+                    <button type="submit">Delete Group</button>
+                </form>
+            </aside>
         </div>
-        <div>
-            <a href="/lists"><button>Group Lists</button></a>
-        </div>
-        <div>
-            <a href="/pics"><button>Group Pictures</button></a>
-        </div>
-        <aside>
-            <a href="/groups/<%=group._id%>/edit"><button>Edit Group</button></a>
-            <form action="/groups/<%=group._id%>?_method=DELETE" method="post">
-                <button type="submit">Delete Group</button>
-            </form>
-        </aside>
     </main>
 </body>
 
