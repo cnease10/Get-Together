@@ -183,6 +183,8 @@ font-size: 50px;
 
 }
 
+
+
 /*---------home-Index-end-----------.ejs*/
 
 /*---------inside-groups-lists-recipes-begin-----.ejs*/
@@ -206,7 +208,7 @@ font-size: 50px;
 	color: #D3AC2B;
 	grid-area: ejsheading;
 	font-size: 40px;
-	width: 100%;
+	width: 95%;
 	position: absolute;
 	background-color: #333D51;
 	border-width: 5px;
@@ -214,22 +216,36 @@ font-size: 50px;
 	border-color: #F4F3EA;
 	padding: 15px;
 	text-align: center;
+	margin-left: 10px;
 
+}
+
+.ejsfooter {
+	font-family: 'Devonshire', cursive;
+	grid-area: footer-r;
+	background-color: #333D51;
+	text-align: center;
+	border-style: double;
+	border-color: #D3AC2B;
+	color: #D3AC2B;
+	margin-right: 20px;
+	margin-bottom: 50px;
 }
 
 li {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	color: #D3AC2B;
 }
 
 a {
 	text-decoration:  none;
-	color: #333D51;
+	color: #D3AC2B;
 	font-weight: bold;
 }
 a:hover {
-	color: white;
+	color: rgb(136, 140, 146);
 }
 
 nav {
@@ -277,6 +293,7 @@ button:hover {
 	background-color: #F4F3EA;
 	font-weight: bold;
 	font-size: 20px;
+	color: #D3AC2B;
 }
 
 .ejsFooter {
@@ -299,7 +316,8 @@ button:hover {
 
 .rightsidecontent{
 	grid-area: ejsotherContent;
-	margin-top: 50px;
+	margin-top: 100px;
+
 }
 
 .groupNameAnchor {
@@ -320,11 +338,10 @@ button:hover {
 }
 
 .groupShowPic {
-	position: relative;
 	max-width: 100%;
 	height: auto;
 	border-radius: 30%;
-	margin-left: 15px;
+	position: center;
 }
 
 .groupLinks {
