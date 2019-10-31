@@ -38,13 +38,13 @@
         </nav>
     </header>
     <h1 class="primaryHeading"><%=group.name%></h1>
-    <main class="groupMainContent" id="groupSMain"> 
-        <h4 class="heading">Group formed on <%=group.dateStarted%></h4>
-        <!-- this is where I added some things -->
+    <main class="mainContent" id="groupSMain"> 
+        <div class="groupWrapper">
+
+            <h4 class="heading">Group formed on <%=group.dateStarted%></h4>
+            <img class="groupShowPic" src="<%=group.groupPhoto%>">
+        </div>
         
-        <section class="crop" >
-           <img class="groupShowPic" src="<%=group.groupPhoto%>">
-        </section> 
     </main>
     <footer class="ejsfooter">
             <p>Get Together 2019 ® </p>
