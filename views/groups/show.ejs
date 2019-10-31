@@ -11,8 +11,8 @@
 </head>
 
 <body id="groupShow" class="mainejs">
-    <header>
-        <nav class="groupNavStuff">
+    <header class="otherContent">
+        <nav>
             <ul class="navUl">
                 <li>
                     <a href="/"><button>Home Page</button></a>
@@ -32,18 +32,18 @@
         <!-- this is where I added some things -->
         <div class="groupLinks">
            
-                <a href="/recipes"><button>Group Recipes</button></a>
+                <a href="/recipes"><button><%=group.name%> Recipes</button></a>
            
             
-                <a href="/lists"><button>Group Lists</button></a>
+                <a href="/lists"><button><%=group.name%> Lists</button></a>
          
             
-                <a href="/pics"><button>Group Pictures</button></a>
+                <a href="/pics"><button><%=group.name%> Pictures</button></a>
            
             <aside>
-                <a href="/groups/<%=group._id%>/edit"><button>Edit Group</button></a>
+                <a href="/groups/<%=group._id%>/edit"><button>Edit <%=group.name%></button></a>
                 <form action="/groups/<%=group._id%>?_method=DELETE" method="post">
-                    <button type="submit">Delete Group</button>
+                    <button type="submit">Delete <%=group.name%></button>
                 </form>
             </aside>
         </div>

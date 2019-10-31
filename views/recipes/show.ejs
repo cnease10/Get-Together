@@ -9,11 +9,11 @@
 
   </head>
   <body class="mainejs" id="recShow">
-    <header>
+    <header class="otherContent">
       <nav>
         <ul class="navUl">
           <li>
-            <a href="/recipes"><button>Back to <br> group recipes</button></a>
+            <a href="/recipes"><button>Back to <br> <%=group.name%> recipes</button></a>
           </li>
           <li>
             <!--Mike this is another spot where we will need to be
@@ -49,12 +49,12 @@
         <section>
           Comments:<br><br> <%=recipe.comments%>
         </section><br>
-        <section>
-          <a href="/recipes/<%=recipe._id%>/edit">Edit Recipe</a>
-          <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post"><br>
-            <button type="submit">Delete Recipe</button>
-          </form>
-        </section>
-    </main>
+      </main>
+          <section class="rightsidecontent">
+            <a href="/recipes/<%=recipe._id%>/edit"><button>Edit Recipe</button></a>
+            <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post"><br>
+              <button type="submit">Delete Recipe</button>
+            </form>
+          </section>
   </body>
 </html>
