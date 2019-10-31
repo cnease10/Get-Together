@@ -300,7 +300,8 @@ button:hover {
 
 .rightsidecontent{
 	grid-area: ejsotherContent;
-	margin-top: 50px;
+	margin-top: 100px;
+
 }
 
 .groupNameAnchor {
@@ -321,11 +322,10 @@ button:hover {
 }
 
 .groupShowPic {
-	position: relative;
 	max-width: 100%;
 	height: auto;
 	border-radius: 30%;
-	margin-left: 15px;
+	position: center;
 }
 
 .groupLinks {
