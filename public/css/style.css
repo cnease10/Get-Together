@@ -288,12 +288,25 @@ button:hover {
 	grid-area: ejscontent;
 	padding-bottom: 250px;
 	margin: 50px 10px;
+	margin-left: 90px;
 	text-align: center;
 	border-style: double;
 	background-color: #F4F3EA;
 	font-weight: bold;
 	font-size: 20px;
 	color: #D3AC2B;
+	text-align: center;
+	
+	
+}
+
+.groupWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	padding: 10px;
 }
 
 .ejsFooter {
@@ -301,6 +314,7 @@ button:hover {
 }
 
 .groupMainContent {
+	margin-left: 75px;
 	padding: 70px;
 	grid-area: ejscontent;
 	border-style: double;
@@ -339,9 +353,11 @@ button:hover {
 
 .groupShowPic {
 	max-width: 100%;
-	height: auto;
 	border-radius: 30%;
-	position: center;
+	height: 50vh;
+	display: block;
+	
+
 }
 
 .groupLinks {
@@ -353,6 +369,22 @@ button:hover {
 	font-size: 120%;
 }
 
+/* @media (min-width: 640px){
+ 
+
+	 
+	}
+	 
+	@media (min-width: 768px){
+	 
+	
+	}
+	 
+	@media (min-width: 1024px){
+	 
+
+	} */
+	 
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/
 
