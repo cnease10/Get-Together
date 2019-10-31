@@ -11,14 +11,14 @@
 </head>
 
 <body id="groupShow" class="mainejs">
-    <header>
-        <nav class="groupNavStuff">
+    <header class="otherContent">
+        <nav>
             <ul class="navUl">
                 <li>
                     <a href="/"><button>Home Page</button></a>
                 </li>
                 <li>
-                    <a href="/groups"><button>My Groups</button></a>
+                    <a href="/groups"><button>My Get Togethers</button></a>
                 </li>
             </ul>
         </nav>
@@ -31,19 +31,19 @@
         <h4 class="heading">Group formed on <%=group.dateStarted%></h4>
         <!-- this is where I added some things -->
         <div class="groupLinks">
-            <div>
-                <a href="/recipes"><button>Group Recipes</button></a>
-            </div><br>
-            <div>
-                <a href="/lists"><button>Group Lists</button></a>
-            </div><br>
-            <div>
-                <a href="/pics"><button>Group Pictures</button></a>
-            </div><br>
+           
+                <a href="/recipes"><button><%=group.name%> Recipes</button></a>
+           
+            
+                <a href="/lists"><button><%=group.name%> Lists</button></a>
+         
+            
+                <a href="/pics"><button><%=group.name%> Pictures</button></a>
+           
             <aside>
-                <a href="/groups/<%=group._id%>/edit"><button>Edit Group</button></a><br><br>
+                <a href="/groups/<%=group._id%>/edit"><button>Edit <%=group.name%></button></a>
                 <form action="/groups/<%=group._id%>?_method=DELETE" method="post">
-                    <button type="submit">Delete Group</button>
+                    <button type="submit">Delete <%=group.name%></button>
                 </form>
             </aside>
         </div>

@@ -145,7 +145,7 @@ font-size: 2em;
 	text-align: center;
 	width: 6vh;
 	font-family: 'Devonshire', cursive;
-
+	margin-left: 20px;
 
 
 }
@@ -213,12 +213,15 @@ a {
 
 nav {
 	padding: 10px;
-	margin: 10px;
+	margin-top: 50px;
 	
 }
 
 button {
 	border-radius: 8px;
+	padding: 10px;
+	margin: 10px;
+	font-weight: bold;
 }
 
 
@@ -242,7 +245,8 @@ button {
 	border-style: double;
 	background-color: #F4F3EA;
 	height: 50px;
-
+	font-weight: bold;
+	font-size: 20px;
 }
 
 .ejsFooter {
@@ -261,6 +265,11 @@ button {
 	grid-area: ejsnav;
 	margin: 40px 15px;
 
+}
+
+.rightsidecontent{
+	grid-area: ejsotherContent;
+	margin-top: 50px;
 }
 
 .groupNameAnchor {
@@ -283,7 +292,8 @@ button {
 .groupShowPic {
 	max-width: 100%;
 	height: auto;
-	border-radius: 50%;
+	border-radius: 30%;
+	margin-left: 15px;
 }
 
 .groupLinks {
@@ -294,7 +304,6 @@ button {
 	color: #D3AC2B;
 	font-size: 120%;
 }
-
 
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/
