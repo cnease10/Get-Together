@@ -265,6 +265,11 @@ button {
 
 }
 
+.rightsidecontent{
+	grid-area: ejsotherContent;
+	margin-top: 50px;
+}
+
 .groupNameAnchor {
 	color: #D3AC2B; 
 	font-size: 150%; 
@@ -296,7 +301,6 @@ button {
 	color: #D3AC2B;
 	font-size: 120%;
 }
-
 
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/

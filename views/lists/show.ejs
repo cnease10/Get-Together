@@ -38,16 +38,19 @@
             <%for (let i = 0; i < list.items.length; i++) { %>
                 <li>
                     <%=list.items[i] %>
+                    <input type="checkbox">
                 </li><br>
                 <% } %>
         </ul>
-        <section>
-            <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a><br>
-            <form action="/lists/<%=list.id%>?_method=DELETE" method="POST"><br>
-                <button type="submit">Delete List</button>
-            </form>
-        </section>
+        <p>Check the box next to the items you plan to bring
+        </p>
     </main>
+            <section class="rightsidecontent">
+                <a href="/lists/<%=list._id%>/edit"><button>Edit List</button></a><br>
+                <form action="/lists/<%=list.id%>?_method=DELETE" method="POST"><br>
+                    <button type="submit">Delete List</button>
+                </form>
+            </section>
         <h2 style="font-size: 135%; color: red;" class="ejsFooter"> Due: <%=list.dueDate%> </h2>
 </body>
 </html>
