@@ -7,9 +7,14 @@ const Group = require('../models/groups.js');
 //Pics INDEX   
 router.get('/', async (req, res) => {
     try {
-        const foundPics = await Pic.find({});
+        const foundGroup = await Group.findOne({ name: req.session.group.name })
+            .populate(
+                {
+                    path: 'pics',
+                })
+            .exec() 
         res.render('pics/index.ejs', {
-            pic: foundPics
+            pic: foundGroup.pics
         });
     } catch (err) {
         res.send(err);

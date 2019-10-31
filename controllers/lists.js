@@ -7,20 +7,20 @@ const User = require('../models/users.js');
 //LIST INDEX   
 router.get('/', async (req, res) => {
     try {
-        //NOT WORKING, display only this groups recipes
-        // const foundUser = await User.findOne({ 'username': req.session.username })
-        //     .populate(
-        //         {
-        //             path: 'groups',
-        //             match: { _id: req.params.id }
-        //         })
-        //     .exec()       
-        // const foundLists = await foundUser.groups[0].lists
-            // console.log(`FOUND LISTS`, foundList)
+        // console.log(`REQ.SESSION.GROUP`, req.session.group)
+        const foundGroup = await Group.findOne({ name: req.session.group.name })
+            .populate(
+                {
+                    path: 'lists',
+                })
+            .exec()               
+        
+        // const foundList = await List.find({});
+        // console.log(`FOUND GROUP`, foundGroup)
+        // console.log(`FOUND LIST`, foundList)
 
-        const foundLists = await List.find({});
         res.render('lists/index.ejs', {
-            list: foundLists
+            list: foundGroup.lists
         });
     } catch (err) {
         res.send(err);

@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
                     match: { _id: req.params.id }
                 })
             .exec()
-        console.log(`FOUND USER`, foundUser)
+        // console.log(`FOUND USER`, foundUser)
 
 
         // const foundGroups = await Group.find({}); //not needed?
@@ -61,11 +61,15 @@ router.get('/:id', async (req, res) => {
                     match: { _id: req.params.id }
                 })
             .exec()
+        // below adds current group to req
+        req.session.group = foundUser.groups[0]
+        // console.log(`req.session`, req.session)
+        // console.log(`req.session.GROUP`, req.session.group)
         res.render('groups/show.ejs', {
             user: foundUser,
             group: foundUser.groups[0],
         });
-        console.log(foundUser)
+        // console.log(foundUser)
     } catch (err) {
         res.send(err);
     }
