@@ -81,9 +81,9 @@ router.post('/', async (req, res) => {
     try {
 
         //Cierras
-        const trimmedItems = req.body.items.replace(/\s+/g, '');
+        // const trimmedItems = req.body.items.replace(/\s+/g, '');
         // console.log(trimmedItems);
-        const separatedItems = trimmedItems.split(',');
+        const separatedItems = req.body.items.split(',');
         // console.log()
         const newList = {
             title: req.body.title,
@@ -140,9 +140,9 @@ router.put('/:id', async (req, res) => {
         const foundGroup = Group.findOne({ 'lists': req.params.id });
         // console.log(`FOUND GROUP`, foundGroup)
 
-        const trimmedItems = req.body.items.replace(/\s+/g, '');
+        // const trimmedItems = req.body.items.replace(/\s+/g, '');
         // console.log(`TRIMMED`, trimmedItems);
-        const separatedItems = trimmedItems.split(',');
+        const separatedItems = req.body.items.split(',');
         const newList = {
             title: req.body.title,
             items: separatedItems,
