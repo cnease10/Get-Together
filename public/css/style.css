@@ -156,7 +156,7 @@ font-size: 50px;
 	border-style: ridge;
 	border-color: #354649;
 	display: block;
-	vertical-align: middle;
+	vertical-align: center;
 	text-align: center;
 	width: 6vh;
 	font-family: 'Devonshire', cursive;
@@ -195,11 +195,11 @@ font-size: 50px;
 	width: 100%;
 	height: auto;
 	grid-template-columns: 2fr 4fr 2fr;
-	grid-template-rows: 1fr 2fr 2fr 1fr;
+	grid-template-rows: .5fr 2fr 2fr 2fr;
 	 grid-template-areas: 
 	"ejsheading ejsheading ejsheading"
 	"ejsnav ejscontent ejsotherContent"
-	"ejsnav ejscontent ejsotherContent"
+	"ejsnav ejscontent ejsotherContent-r"
 	"ejsfooter ejsfooter ejsfooter-r" 
 }
 
@@ -217,19 +217,28 @@ font-size: 50px;
 	padding: 15px;
 	text-align: center;
 	margin-left: 10px;
+	padding-right: 15px;
 
+}
+
+.groupHeader {
+	text-align: center;
+	margin-left: 40px;
 }
 
 .ejsfooter {
 	font-family: 'Devonshire', cursive;
-	grid-area: footer-r;
+	grid-area: ejsotherContent-r;
 	background-color: #333D51;
 	text-align: center;
 	border-style: double;
 	border-color: #D3AC2B;
 	color: #D3AC2B;
 	margin-right: 20px;
-	margin-bottom: 50px;
+	height: 50px;
+	width: 200px;
+	margin-top: 300px;
+	
 }
 
 li {
@@ -237,6 +246,10 @@ li {
 	margin: 0;
 	padding: 0;
 	color: #D3AC2B;
+}
+
+.alignLi {
+	margin-right: 30px;
 }
 
 a {
@@ -286,9 +299,10 @@ button:hover {
 
 .mainContent {
 	grid-area: ejscontent;
+	padding-top: 25px;
 	padding-bottom: 250px;
 	margin: 50px 10px;
-	margin-left: 90px;
+	margin-left: 70px;
 	text-align: center;
 	border-style: double;
 	background-color: #F4F3EA;
@@ -369,21 +383,6 @@ button:hover {
 	font-size: 120%;
 }
 
-/* @media (min-width: 640px){
- 
-
-	 
-	}
-	 
-	@media (min-width: 768px){
-	 
-	
-	}
-	 
-	@media (min-width: 1024px){
-	 
-
-	} */
 	 
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/
