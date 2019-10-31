@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Recipe = require('../models/recipes');
 const Group = require("../models/groups")
+const User = require('../models/users.js');
 
 
 //index route   
@@ -26,9 +27,15 @@ router.get('/', async (req, res) => {
 //new route   
 router.get('/new', async (req, res) => {
 	try{
-		const allGroups = await Group.find({})
+		const foundUser = await User.findOne({ 'username': req.session.username })
+		.populate(
+				{
+						path: 'groups'
+					})
+				.exec()
+				console.log(`RECIPEFOUNDUSER`, foundUser)
 		res.render('recipes/new.ejs', {
-			groups: allGroups
+			groups: foundUser.groups
 		})
 	}catch(err){
 		res.send(err)
@@ -77,13 +84,18 @@ router.post('/', async (req, res) => {
 //edit route   
 router.get('/:id/edit', async (req, res) => {
 	try { 
-		const allGroups = await Group.find({})
+		const foundUser = await User.findOne({ 'username': req.session.username })
+			.populate(
+				{
+					path: 'groups'
+				})
+			.exec()
 		const foundRecipeGroup = await Group.findOne({"recipes": req.params.id})
 			.populate({path: "recipes", match: {_id: req.params.id}})
 			.exec()
 		res.render("recipes/edit.ejs", {
 			recipe: foundRecipeGroup.recipes[0],
-			groups: allGroups,
+			groups: foundUser.groups,
 			recipeGroup: foundRecipeGroup
 		})	
 
