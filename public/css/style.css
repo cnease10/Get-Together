@@ -30,7 +30,7 @@ body {
 
 .gtHeading {
 color: #D3AC2B;
-font-size: 2em;
+font-size: 50px;
 }
 
 
@@ -43,7 +43,9 @@ font-size: 2em;
 	grid-template-rows: 1fr 1fr;
 	grid-template-areas: 
 	"aboutDesc famimg"
-	"listimg smAbout "
+	"listimg smAbout ";
+	border-style: double;
+	border-color: #D3AC2B;
 }
 
 .listimg {
@@ -79,7 +81,8 @@ font-size: 2em;
 	display: block;
 	text-align: center;
 	max-width: 30vh;
-
+	border-style: double;
+	border-color: #D3AC2B;
 }
 
 .logoHeading {
@@ -102,14 +105,20 @@ font-size: 2em;
 }
 
 .usernameRegister {
+	border-style: double;
+	border-color: #D3AC2B;
 
 }
 
 .emailRegister {
+	border-style: double;
+	border-color: #D3AC2B;
 	
 }
 
 .passwordRegister {
+	border-style: double;
+	border-color: #D3AC2B;
 
 }
 
@@ -118,6 +127,8 @@ font-size: 2em;
 	display: block;
 	text-align: left;
 	background-color: #CBD0D8;
+	border-style: double;
+	border-color: #D3AC2B;
 }
 
 .loginWrapper {
@@ -130,10 +141,14 @@ font-size: 2em;
 .usernameLogin {
 	grid-area: login;
 	margin: 5px;
+	border-style: double;
+	border-color: #D3AC2B;
 }
 
 .passwordLogin {
 	margin: 5px;
+	border-style: double;
+	border-color: #D3AC2B;
 }
 
 .loginButton {
@@ -146,6 +161,7 @@ font-size: 2em;
 	width: 6vh;
 	font-family: 'Devonshire', cursive;
 	margin-left: 20px;
+	font-weight: bold;
 
 
 }
@@ -156,6 +172,8 @@ font-size: 2em;
 	grid-area: footer-r;
 	background-color: #CBD0D8;
 	text-align: center;
+	border-style: double;
+	border-color: #D3AC2B;
 
 }
 
@@ -164,6 +182,8 @@ font-size: 2em;
 	background-color: #333D51;
 
 }
+
+
 
 /*---------home-Index-end-----------.ejs*/
 
@@ -188,27 +208,44 @@ font-size: 2em;
 	color: #D3AC2B;
 	grid-area: ejsheading;
 	font-size: 40px;
-	margin: 30px;
-	width: 100%;
+	width: 95%;
 	position: absolute;
 	background-color: #333D51;
 	border-width: 5px;
 	border-style: double;
 	border-color: #F4F3EA;
 	padding: 15px;
+	text-align: center;
+	margin-left: 10px;
 
+}
+
+.ejsfooter {
+	font-family: 'Devonshire', cursive;
+	grid-area: footer-r;
+	background-color: #333D51;
+	text-align: center;
+	border-style: double;
+	border-color: #D3AC2B;
+	color: #D3AC2B;
+	margin-right: 20px;
+	margin-bottom: 50px;
 }
 
 li {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	color: #D3AC2B;
 }
 
 a {
 	text-decoration:  none;
-	color: #333D51;
+	color: #D3AC2B;
 	font-weight: bold;
+}
+a:hover {
+	color: rgb(136, 140, 146);
 }
 
 nav {
@@ -222,7 +259,17 @@ button {
 	padding: 10px;
 	margin: 10px;
 	font-weight: bold;
+	border-style: double;
+	border-color: #D3AC2B;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	  
 }
+button:hover {
+	background-color: #F4F3EA;
+	color: #D3AC2B;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
 
 
 .crop {
@@ -244,9 +291,9 @@ button {
 	text-align: center;
 	border-style: double;
 	background-color: #F4F3EA;
-	height: 50px;
 	font-weight: bold;
 	font-size: 20px;
+	color: #D3AC2B;
 }
 
 .ejsFooter {
@@ -269,7 +316,8 @@ button {
 
 .rightsidecontent{
 	grid-area: ejsotherContent;
-	margin-top: 50px;
+	margin-top: 100px;
+
 }
 
 .groupNameAnchor {
@@ -293,7 +341,7 @@ button {
 	max-width: 100%;
 	height: auto;
 	border-radius: 30%;
-	margin-left: 15px;
+	position: center;
 }
 
 .groupLinks {
