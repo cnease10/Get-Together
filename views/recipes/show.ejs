@@ -32,7 +32,7 @@
         <small class="recShowSmall">
           Recipe from group: 
           <a href="/groups/<%=group._id%>"><%=group.name%></a>
-        </small>
+        </small><br><br>
         <!-- <section><a href="/recipes/<%=
         // recipe._id
         %>">
@@ -42,16 +42,16 @@
         </section> -->
         <section>
           Ingriedients:<br> <%=recipe.ingredients%>
-        </section>
+        </section><br>
         <section>
           Instructions:<br> <%=recipe.instructions%>
-        </section>
+        </section><br>
         <section>
-          Comments:<br> <%=recipe.comments%>
-        </section>
+          Comments:<br><br> <%=recipe.comments%>
+        </section><br>
         <section>
           <a href="/recipes/<%=recipe._id%>/edit">Edit Recipe</a>
-          <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post">
+          <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post"><br>
             <button type="submit">Delete Recipe</button>
           </form>
         </section>

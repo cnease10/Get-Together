@@ -12,7 +12,7 @@
 
 <body id="groupEdit" class="mainejs">
     <header >
-        <h1 class="primaryHeading">Edit <%=group.title%>'s Info</h1>
+        <h1 class="primaryHeading">Get Together<%=group.title%></h1>
         <nav>
             <ul class="navUl">
                 <li>
@@ -28,10 +28,10 @@
         </nav>
     </header>
     <main class="groupMainContent" id="groupEMain">
-        <h2 class="heading">Group Attributes:</h2>
+        <h2 class="heading">edit your group here:</h2>
         <form action="/groups/<%=group._id%>?_method=PUT" method="post">
-                Edit name of group: <input type="text" name="name" value="<%=group.name%>" /><br />
-                Edit group photo URL: <input type="text" name="groupPhoto" value="<%=group.groupPhoto%>" /><br />
+                Edit name of group: <input type="text" name="name" value="<%=group.name%>" /><br /><br>
+                Edit group photo URL: <input type="text" name="groupPhoto" value="<%=group.groupPhoto%>" /><br /><br>
                 <button type="submit">Update Group</button>
             
         </form>

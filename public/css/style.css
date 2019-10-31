@@ -1,7 +1,11 @@
+/*---------body-applies-to-everything--.ejs*/
+
 body {
 	font-family: 'Neucha', cursive;
 	background-color: #333D51;
 }
+
+/*---------body-end----.ejs*/
 
 
 /*---------home-Index-begin-----------.ejs*/
@@ -232,11 +236,12 @@ button {
 
 .mainContent {
 	grid-area: ejscontent;
-	margin: 10px;
+	padding-bottom: 250px;
+	margin: 50px 10px;
 	text-align: center;
 	border-style: double;
 	background-color: #F4F3EA;
-	height: 50%;
+	height: 50px;
 
 }
 
@@ -252,8 +257,9 @@ button {
 	text-align: center;
 }
 
-.groupOtherContent {
+.otherContent {
 	grid-area: ejsnav;
+	margin: 40px 15px;
 
 }
 

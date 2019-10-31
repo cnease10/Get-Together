@@ -31,16 +31,16 @@
             </ul>
         </nav>
     </header>
-    <main id="picNMain">
-        <form action="/pics" method="POST">
+    <main class="mainContent" id="picNMain">
+        <form style="margin-top: 10px" action="/pics" method="POST">
             Which Group does this Picture belong to: <select name="groupId">
                 <% for(let i = 0; i < groups.length; i++) { %>
                 <option value="<%=groups[i]._id%>"><%=groups[i].name%></option>
                 <% } %>
-            </select><br />
-            Picture URL: <input type="text" name="url"> <br>
+            </select><br /><br>
+            Picture URL: <input type="text" name="url"> <br><br>
             Caption your photo: <input type="text" name="caption"> <br>
-            <button type="submit">Add Picture</button>
+<br>            <button type="submit">Add Picture</button>
         </form>
     </main>
 </body>
