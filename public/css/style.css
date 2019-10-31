@@ -228,6 +228,9 @@ a {
 	color: #333D51;
 	font-weight: bold;
 }
+a:hover {
+	color: white;
+}
 
 nav {
 	padding: 10px;
