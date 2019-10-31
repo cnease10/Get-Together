@@ -275,7 +275,6 @@ button:hover {
 	text-align: center;
 	border-style: double;
 	background-color: #F4F3EA;
-	height: 50px;
 	font-weight: bold;
 	font-size: 20px;
 }
@@ -321,6 +320,7 @@ button:hover {
 }
 
 .groupShowPic {
+	position: relative;
 	max-width: 100%;
 	height: auto;
 	border-radius: 30%;
