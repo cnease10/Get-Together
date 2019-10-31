@@ -3,21 +3,18 @@ const router = express.Router();
 const Recipe = require('../models/recipes');
 const Group = require("../models/groups")
 
-//need to think about if this file needs to be relational
-//ex: const name = require('../models/name.js');
-//need routes
-
-//in reference to above comment, added 
-//this for now:
-
-// const User = require('..models/users');
 
 //index route   
 router.get('/', async (req, res) => {
 	try{
-		const foundRecipes = await Recipe.find({})
+		const foundGroup = await Group.findOne({ name: req.session.group.name })
+			.populate(
+				{
+					path: 'recipes',
+				})
+			.exec() 
 		res.render("recipes/index.ejs", {
-			recipes: foundRecipes
+			recipes: foundGroup.recipes
 		})
 	}catch(err){
 		res.send(err)

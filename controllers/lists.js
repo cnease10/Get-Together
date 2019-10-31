@@ -27,12 +27,24 @@ router.get('/', async (req, res) => {
     }
 });
 
-//LIST NEW   
+//LIST NEW
 router.get('/new', async (req, res) => {
     try {
-        const allGroups = await Group.find()
+
+        const foundUser = await User.findOne({ 'username': req.session.username })
+            .populate(
+                {
+                    path: 'groups'
+                })
+            .exec()
+
+        // const allGroups = await Group.find()
+
+                // console.log(`FOUNDUSERS GROUPS`, foundUser)
+                // console.log(`ALL GROUPS`, allGroups)
+
         res.render('lists/new.ejs', {
-            groups: allGroups
+            groups: foundUser.groups
         });
     } catch (err) {
         res.send(err);
@@ -91,17 +103,24 @@ router.post('/', async (req, res) => {
     } 
 });
 
-//LIST EDIT   
+//LIST EDIT
 router.get('/:id/edit', async (req, res) => {
     try {
-        const allGroups = await Group.find({})
+        const foundUser = await User.findOne({ 'username': req.session.username })
+            .populate(
+                {
+                    path: 'groups'
+                })
+            .exec()
 
+        // console.log(`FOINDUSER.groups`, foundUser)
         const foundListGroup = await Group.findOne({ 'lists': req.params.id })
             .populate({ path: 'lists', match: { _id: req.params.id } })
             .exec()
+            
         res.render('lists/edit.ejs', {
             list: foundListGroup.lists[0],
-            groups: allGroups,
+            groups: foundUser.groups,
             listGroup: foundListGroup
         });
         // const foundList = await List.findById(req.params.id);
@@ -119,10 +138,10 @@ router.get('/:id/edit', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const foundGroup = Group.findOne({ 'lists': req.params.id });
-        console.log(`FOUND GROUP`, foundGroup)
+        // console.log(`FOUND GROUP`, foundGroup)
 
         const trimmedItems = req.body.items.replace(/\s+/g, '');
-        console.log(`TRIMMED`, trimmedItems);
+        // console.log(`TRIMMED`, trimmedItems);
         const separatedItems = trimmedItems.split(',');
         const newList = {
             title: req.body.title,

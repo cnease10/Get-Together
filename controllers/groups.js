@@ -44,6 +44,7 @@ router.post('/', async (req, res) => {
         const createGroup = await Group.create(req.body);
         findUser.groups.push(createGroup);
         await findUser.save();
+        console.log(`FINDUSER CHECK FOR GROUPS ARRAY`, findUser)
         res.redirect('/groups');
     } catch (err) {
         res.send(err);
