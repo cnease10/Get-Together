@@ -416,7 +416,7 @@ button:hover {
 		display: grid;
 		height: 100vh;
 		grid-template-columns: 2fr 1fr;
-		grid-template-rows: .5fr 1fr 1fr;
+		grid-template-rows: 50px; 1fr 1fr;
 		grid-template-areas: 
 		"title login"
 		"about register"
