@@ -47,7 +47,8 @@ router.post('/', async (req, res) => {
         console.log(`FINDUSER CHECK FOR GROUPS ARRAY`, findUser)
         res.redirect('/groups');
     } catch (err) {
-        res.send(err);
+        console.log(err)
+        res.send("Please go back and fill in all required fields.");
     }
 });
 
@@ -105,7 +106,7 @@ router.put('/:id', async (req, res) => {
         // }
     } catch (err) {
         console.log(err)
-        res.send(err);
+        res.send("Please go back and fill in all required fields.");
     }
 });
 

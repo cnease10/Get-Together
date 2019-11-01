@@ -54,7 +54,8 @@ router.post('/', async (req, res) => {
         console.log(`ARE THERE PICS IN THE GROUP PICS ARRAY??`, foundGroup)
         res.redirect('/pics');
     } catch (err) {
-        res.send(err);
+        console.log(err)
+        res.send("Please go back and fill in all required fields.");
     }
 });
 

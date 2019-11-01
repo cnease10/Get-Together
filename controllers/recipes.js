@@ -74,7 +74,8 @@ router.post('/', async (req, res) => {
 		console.log(foundGroup);
 		res.redirect('/recipes');
 	} catch(err) {
-		res.send(err);
+		console.log(err)
+		res.send("Please go back and fill in all required fields.");
 	}
 });
 
@@ -123,7 +124,8 @@ router.put('/:id', async (req, res) => {
 			res.redirect('/recipes/' + req.params.id);
 		}
 	} catch(err) {
-		res.send(err);
+		console.log(err)
+		res.send("Please go back and fill in all required fields.");
 	}
 })
 

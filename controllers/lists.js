@@ -91,7 +91,8 @@ router.post('/', async (req, res) => {
         console.log(`NEW LIST IN GROUP`, foundGroup)
         res.redirect('/lists');
     } catch (err) {
-        res.send(err);
+        console.log(err)
+        res.send("Please go back and fill in all required fields.");
     } 
 });
 
@@ -159,7 +160,8 @@ router.put('/:id', async (req, res) => {
             res.redirect('/lists/' + req.params.id);
         }
     } catch (err) {
-        res.send(err);
+        console.log(err)
+        res.send("Please go back and fill in all required fields.");
     }
 });
 

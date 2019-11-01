@@ -5,19 +5,24 @@ const bcrypt = require("bcryptjs");
 
 //Registration post
 router.post('/registration', async (req, res) => {
-    const password = req.body.password;
-    const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
-    const newUser = {};
-    newUser.username = req.body.username;
-    newUser.email = req.body.email;
-    newUser.password = passwordHash;
+    try{
+        const password = req.body.password;
+        const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+        const newUser = {};
+        newUser.username = req.body.username;
+        newUser.email = req.body.email;
+        newUser.password = passwordHash;
 
-    const createdUser = await User.create(newUser);
-    console.log(`Created User ==>`,createdUser)
-    req.session.username = createdUser.username;
-    req.session.logged = true;
-    res.redirect('/groups')
-})
+        const createdUser = await User.create(newUser);
+        console.log(`Created User ==>`,createdUser)
+        req.session.username = createdUser.username;
+        req.session.logged = true;
+        res.redirect('/groups')
+    }catch(err){
+        console.log(err)
+        res.send("Please go back and fill in all required fields.");
+    }
+    })
 
 //Login post
 router.post('/login', async (req, res) => {
