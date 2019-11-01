@@ -32,7 +32,7 @@
         <ul>
             <% for (let i = 0; i < pic.length; i++) { %>
             <li>
-                <img src="<%=pic[i].url%>">
+                <img style="max-width: 85%;" src="<%=pic[i].url%>">
                 <p><%= pic[i].caption %></p>
                 <form action="/pics/<%=pic[i].id%>?_method=DELETE" method="POST">
                     <button>Delete Picture</button>
@@ -41,7 +41,7 @@
             <% } %>
         </ul>
     </main>
-    <footer class="ejsfooter">
+    <footer class="ejsFooter">
             <p>Get Together 2019 ® </p>
         </footer>
 </body>

@@ -226,9 +226,9 @@ font-size: 50px;
 	margin-left: 40px;
 }
 
-.ejsfooter {
+.ejsFooter {
 	font-family: 'Devonshire', cursive;
-	grid-area: ejsotherContent-r;
+	grid-area: ejsfooter-r;
 	background-color: #333D51;
 	text-align: center;
 	border-style: double;
@@ -310,6 +310,8 @@ button:hover {
 	font-size: 20px;
 	color: #D3AC2B;
 	text-align: center;
+	max-width: 65%;
+	height: auto;
 	
 	
 }
@@ -323,9 +325,6 @@ button:hover {
 	padding: 10px;
 }
 
-.ejsFooter {
-	grid-area: ejsfooter;
-}
 
 .groupMainContent {
 	margin-left: 75px;
@@ -345,6 +344,7 @@ button:hover {
 .rightsidecontent{
 	grid-area: ejsotherContent;
 	margin-top: 100px;
+	display: block;
 
 }
 
@@ -383,7 +383,12 @@ button:hover {
 	font-size: 120%;
 }
 
-	 
+.dueDateTimer {
+	grid-area: ejsotherContent-r;
+	display: block;
+	padding-top: 65%;
+
+}
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/
 
