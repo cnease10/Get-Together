@@ -408,3 +408,38 @@ button:hover {
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/
 
+/* ---------------media queries---------- */
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.mainContainer {
+		display: grid;
+		height: 100vh;
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: .5fr 1fr 1fr;
+		grid-template-areas: 
+		"title login"
+		"about register"
+		"about footer-r"
+	}
+	.aboutSpace {
+		grid-area: about;
+		background-color: #CBD0D8;
+		grid-area: about;
+		border-style: double;
+		border-color: #D3AC2B;
+	}
+	.about {
+		grid-area: aboutDesc;
+		font-size: 13px;
+		text-align: left;
+		overflow: wrap;
+		width: 175px;
+	}
+	.logoHeading {
+		font-family: 'Devonshire', cursive;
+		color: #D3AC2B;
+		font-size: 20px;
+	}
+	
+  }
