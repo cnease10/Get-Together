@@ -408,3 +408,35 @@ button:hover {
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/
 
+/* ---------------media queries---------- */
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.mainContainer {
+		display: grid;
+		height: 100vh;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-areas: 
+		"title login"
+		"about register"
+		"footer footer-r"
+	}
+	.aboutSpace {
+		grid-area: about;
+		background-color: #CBD0D8;
+		display: grid;
+		grid-area: about;
+		grid-template-areas: 
+		"aboutDesc famimg"
+		"listimg smAbout ";
+		border-style: double;
+		border-color: #D3AC2B;
+	}
+	.about {
+		grid-area: aboutDesc;
+		margin: 5px;
+		font-size: 15px;
+		text-align: center;
+	}
+  }
