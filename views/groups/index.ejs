@@ -33,7 +33,7 @@
         <ul>
             <% for(let i = 0; i < groups.length; i++){ %>
             <li>
-                <a class="groupNameAnchor" href="/groups/<%=groups[i]._id%>"><%=groups[i].name%></a><br>
+                <a style="padding: 10px;" class="groupNameAnchor" href="/groups/<%=groups[i]._id%>"><%=groups[i].name%></a><br>
                 <img class="groupImg" style="width:150px;" src="<%= groups[i].groupPhoto %>">
             </li>
             <% } %>

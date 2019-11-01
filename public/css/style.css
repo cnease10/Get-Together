@@ -194,8 +194,8 @@ font-size: 50px;
 	display: grid;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 2fr 4fr 2fr;
-	grid-template-rows: .5fr 2fr 2fr 2fr;
+	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-rows: 100px 2fr 2fr 50px;
 	 grid-template-areas: 
 	"ejsheading ejsheading ejsheading"
 	"ejsnav ejscontent ejsotherContent"
@@ -237,7 +237,6 @@ font-size: 50px;
 	margin-right: 20px;
 	height: 50px;
 	width: 200px;
-	margin-top: 300px;
 	
 }
 
@@ -300,7 +299,7 @@ button:hover {
 .mainContent {
 	grid-area: ejscontent;
 	padding-top: 25px;
-	padding-bottom: 250px;
+	padding-bottom: 100px;
 	margin: 50px 10px;
 	margin-left: 70px;
 	text-align: center;
@@ -310,7 +309,7 @@ button:hover {
 	font-size: 20px;
 	color: #D3AC2B;
 	text-align: center;
-	max-width: 65%;
+	max-width: 85%;
 	height: auto;
 	
 	
@@ -327,12 +326,20 @@ button:hover {
 
 
 .groupMainContent {
-	margin-left: 75px;
-	padding: 70px;
 	grid-area: ejscontent;
-	border-style: double;
-	border-color: #D3AC2B;
+	padding-top: 25px;
+	padding-bottom: 100px;
+	margin: 50px 10px;
+	margin-left: 70px;
 	text-align: center;
+	border-style: double;
+	background-color: #F4F3EA;
+	font-weight: bold;
+	font-size: 20px;
+	color: #D3AC2B;
+	text-align: center;
+	max-width: 85%;
+	height: auto;
 }
 
 .otherContent {
@@ -374,6 +381,7 @@ button:hover {
 
 }
 
+
 .groupLinks {
 	text-align: center;
 }
@@ -388,6 +396,14 @@ button:hover {
 	display: block;
 	padding-top: 65%;
 
+}
+
+.picIndex {
+	border-style: solid;
+	border-width: 5px;
+	border-color: #333D51;
+	max-width: 85%; 
+	height: auto;
 }
 
 /*---------inside-groups-lists-recipes-end-----.ejs*/

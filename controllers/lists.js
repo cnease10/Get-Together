@@ -67,10 +67,6 @@ router.get('/:id', async (req, res) => {
             })
 
 
-
-                //sierras
-        // const foundList = await List.findById(req.params.id);
-        // List.items
     } catch (err) {
         res.send(err);
     }
@@ -79,10 +75,6 @@ router.get('/:id', async (req, res) => {
 //LIST CREATE   
 router.post('/', async (req, res) => {
     try {
-
-        //Cierras
-        // const trimmedItems = req.body.items.replace(/\s+/g, '');
-        // console.log(trimmedItems);
         const separatedItems = req.body.items.split(',');
         // console.log()
         const newList = {
